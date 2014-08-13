@@ -2,7 +2,10 @@ package egovframework.let.uss.olh.qna.web;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -44,7 +47,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  */
 @Controller
 public class EgovQnaManageController {
-
+	private static final Logger logger = LoggerFactory.getLogger(EgovQnaManageController.class);
     @Resource(name = "QnaManageService")
     private EgovQnaManageService qnaManageService;
 
@@ -222,21 +225,26 @@ public class EgovQnaManageController {
             throws Exception {
 
     	// 인증여부 체크
-    	Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
-
+    	//Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+    	Boolean isAuthenticated = true;
+    	LoginVO loginVO;
+    	if(EgovUserDetailsHelper.isAuthenticated()){
+    		loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+    	}else{
+    		loginVO = new LoginVO();
+    		loginVO.setUniqId("anonymous");
+    	}
     	//isAuthenticated = false;
 
     	if(!isAuthenticated) {
-
     		model.addAttribute("result", qnaManageVO);
     		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
         	return "uat/uia/EgovLoginUsr";
     		//return "/uss/olh/qna/EgovQnaCnRegist";
-
     	}
 
         // 로그인VO에서  사용자 정보 가져오기
-        LoginVO	loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+        //LoginVO	loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 
         String	wrterNm 	= loginVO.getName();					// 사용자명
         String	emailAdres 	= loginVO.getEmail();					// email 주소
@@ -275,9 +283,17 @@ public class EgovQnaManageController {
 			return "/uss/olh/qna/EgovQnaCnRegist";
 
 		}
-
+		
+    	LoginVO loginVO;
+    	if(EgovUserDetailsHelper.isAuthenticated()){
+    		loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+    	}else{
+    		loginVO = new LoginVO();
+    		loginVO.setUniqId("anonymous");
+    	}
+		
     	// 로그인VO에서  사용자 정보 가져오기
-    	LoginVO	loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+    	//LoginVO	loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
 
     	String	frstRegisterId = loginVO.getUniqId();
 
@@ -415,8 +431,15 @@ public class EgovQnaManageController {
 		}
 
     	// 로그인VO에서  사용자 정보 가져오기
-    	LoginVO	loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
-
+    	//LoginVO	loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+    	LoginVO loginVO;
+    	if(EgovUserDetailsHelper.isAuthenticated()){
+    		loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+    	}else{
+    		loginVO = new LoginVO();
+    		loginVO.setUniqId("anonymous");
+    	}
+    	
     	String	lastUpdusrId = loginVO.getUniqId();
 
     	qnaManageVO.setLastUpdusrId(lastUpdusrId);    	// 최종수정자ID
@@ -446,9 +469,37 @@ public class EgovQnaManageController {
             @ModelAttribute("searchVO") QnaManageDefaultVO searchVO)
             throws Exception {
 
-    	qnaManageService.deleteQnaCn(qnaManageVO);
+    	
+        
+     // 작성비밀번호를 암호화 하기 위해서 Get
+    	String	writngPassword = qnaManageVO.getWritngPassword();
 
-        return "forward:/uss/olh/qna/QnaListInqire.do";
+    	// EgovFileScrty Util에 있는 암호화 모듈을 적용해서 암호화 한다.
+    	qnaManageVO.setWritngPassword(EgovFileScrty.encode(writngPassword));
+
+        int searchCnt = qnaManageService.selectQnaPasswordConfirmCnt(qnaManageVO);
+
+        if ( searchCnt > 0) {		// 작성 비밀번호가 일치하는 경우
+
+        	// Q&A를 삭제 후 이동.
+        	qnaManageService.deleteQnaCn(qnaManageVO);
+
+            return "forward:/uss/olh/qna/QnaListInqire.do";
+
+        } else	{					// 작성비밀번호가 틀린경우
+
+        	// 작성비밀번호 확인 결과 세팅.
+        	//qnaManageVO.setPasswordConfirmAt("N");
+
+        	String	passwordConfirmAt = "N";
+
+            //model.addAttribute("QnaManageVO", qnaManageVO);
+
+        	// Q&A 상세조회 화면으로 이동.
+        	return "forward:/uss/olh/qna/QnaDetailInqire.do?passwordConfirmAt=" + passwordConfirmAt;
+
+
+        }
     }
 
     /**
@@ -458,9 +509,19 @@ public class EgovQnaManageController {
      * @return	"/uss/olh/qna/EgovQnaAnswerListInqire"
      * @throws Exception
      */
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(value="/uss/olh/qnm/QnaAnswerListInqire.do")
     public String selectQnaAnswerList(@ModelAttribute("searchVO") QnaManageDefaultVO searchVO, ModelMap model) throws Exception {
-
+    	/*Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+    	logger.debug("=============] isAuthenticated [============ {}", isAuthenticated);
+    	if(!isAuthenticated) {
+    		model.addAttribute("message", egovMessageSource.getMessage("fail.common.login"));
+        	return "uat/uia/EgovLoginUsr";
+    	}
+    	LoginVO	loginVO = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+    	List<String> listAuth = EgovUserDetailsHelper.getAuthorities();*/
+    	
+    	logger.debug("=============] isAuthenticated 02[============ {}", EgovUserDetailsHelper.getAuthorities().toString());
     	/** EgovPropertyService.SiteList */
     	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
     	searchVO.setPageSize(propertiesService.getInt("pageSize"));
@@ -492,6 +553,7 @@ public class EgovQnaManageController {
      * @return	"/uss/olh/qna/EgovQnaAnswerDetailInqire"
      * @throws Exception
      */
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping("/uss/olh/qnm/QnaAnswerDetailInqire.do")
     public String	selectQnaAnswerListDetail(
     		QnaManageVO qnaManageVO,
@@ -514,6 +576,7 @@ public class EgovQnaManageController {
      * @return	"/uss/olh/qna/EgovQnaCnAnswerUpdt"
      * @throws Exception
      */
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping("/uss/olh/qnm/QnaCnAnswerUpdtView.do")
     public String updateQnaCnAnswerView(
     		QnaManageVO qnaManageVO,
@@ -540,6 +603,7 @@ public class EgovQnaManageController {
      * @return	"forward:/uss/olh/qnm/QnaAnswerListInqire.do"
      * @throws Exception
      */
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping("/uss/olh/qnm/QnaCnAnswerUpdt.do")
     public String updateQnaCnAnswer(
             QnaManageVO qnaManageVO,

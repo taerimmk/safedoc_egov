@@ -20,7 +20,7 @@
 	  <div class="row">
 		<div class="col-xs-6 col-md-2 col-lg-3 logo-box">
 		  <div class="logo">
-			<a href="index.html">
+			<a href="<c:url value='/' />">
 			  <img src="<c:url value='/' />img/logo.svg" class="logo-img" alt="">
 			</a>
 		  </div>
@@ -81,21 +81,44 @@
 					  </ul>
 					</li>
 					<li class="parent">
-					  <a href="shop.html">주요실적</a>
+					  <a href="#">주요실적</a>
+					  <ul class="sub">
+						<li><a href="<c:url value="/uss/olh/qna/QnaListInqire.do"/>" >Q&A 게시판</a></li>
+					  </ul><!-- .sub -->
 					</li>
-					<li class="parent megamenu promo">
+					<li class="parent">
 					  <a href="#">Q&A</a>
 					  <ul class="sub">
 						<li><a href="<c:url value="/uss/olh/qna/QnaListInqire.do"/>" >Q&A 게시판</a></li>
 					  </ul><!-- .sub -->
 					</li>
-					<li class="parent megamenu promo">
+					<li class="parent">
 					  <a href="#">Contact</a>
 					  <ul class="sub">
 						<li><a href="sidebar-blocks.html">견적문의</a></li>
-						<li><a href="sidebar-blocks.html">방명록</a></li>
+						<!-- <li><a href="sidebar-blocks.html">방명록</a></li> -->
 					  </ul><!-- .sub -->
 					</li>
+					<%
+       LoginVO loginVO = (LoginVO)session.getAttribute("LoginVO"); 
+       if(loginVO == null){ 
+    %>
+					<li class="">
+					  <a href="<c:url value='/uat/uia/egovLoginUsr.do'/>">로그인</a>
+					  
+					</li>
+					<% }else { %>
+					<c:set var="loginName" value="<%= loginVO.getName()%>"/>
+					TT: <%=loginVO.getUserSe()%>
+					<li class="parent">
+					  <a href="#"><c:out value="${loginName}"/> 님</a>
+					  <ul class="sub">
+					  	<li><a href="<c:url value='/uss/olh/qnm/QnaAnswerListInqire.do'/>">서비스관리</a></li>	
+						<li><a href="<c:url value='/uat/uia/actionLogout.do'/>">로그아웃</a></li>
+						
+					  </ul>
+					</li>
+					<% } %>
 				  </ul>
 				</nav>
 			  </div>
@@ -126,6 +149,7 @@
   </div><!-- .header-wrapper -->
    
 </header><!-- .header -->
+
  <%-- <%
        LoginVO loginVO = (LoginVO)session.getAttribute("LoginVO"); 
        if(loginVO == null){ 
@@ -150,4 +174,4 @@
         <li class="righttop_bgmiddle"><a href="<c:url value='/uat/uia/actionLogout.do'/>">로그아웃</a></li>
         <li class="righttop_bgright">&nbsp;</li>
     </ul>
-    <% } %>  --%>   
+    <% } %> --%>    

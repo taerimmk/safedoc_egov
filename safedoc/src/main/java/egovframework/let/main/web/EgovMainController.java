@@ -119,13 +119,14 @@ public class EgovMainController {
     		model.addAttribute("list_menulist", menuManageService.selectMainMenuLeftByAuthor(menuManageVO));
     	}
 
-    	if(flag==null){
+    	/*if(flag==null){
     		return "main/inc/EgovIncSubHeader"; // 업무화면의 상단메뉴 화면
     	}else if(flag.equals("MAIN")){
     		return "main/inc/EgovIncHeader"; // 메인화면의 상단메뉴 화면
     	}else{
     		return "main/inc/EgovIncSubHeader"; // 업무화면의 상단메뉴 화면
-    	}
+    	}*/
+    	return "main/inc/EgovIncSubHeader";
     }
 
 

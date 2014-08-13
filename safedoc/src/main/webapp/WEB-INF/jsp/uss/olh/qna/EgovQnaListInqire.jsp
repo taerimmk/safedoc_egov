@@ -146,15 +146,6 @@
 						</table>
 							<div class="pagination-box">
 								<ul class="pagination">
-									<!-- <li class="disabled"><a href="#" style="font-size: 24px;"><i
-											class="fa fa-angle-left"></i></a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li class="disabled"><a href="#">...</a></li>
-									<li><a href="#">9</a></li>
-									<li><a href="#" style="font-size: 24px;"><i
-											class="fa fa-angle-right"></i></a></li> -->
 									<ui:pagination paginationInfo="${paginationInfo}" type="image"
 										jsFunction="fn_egov_select_linkPage" />		
 								</ul>
@@ -163,13 +154,6 @@
 							
 							
 					</div>
-
-					<%-- <div id="paging_div">
-						<ul class="paging_align">
-							<ui:pagination paginationInfo="${paginationInfo}" type="image"
-								jsFunction="fn_egov_select_linkPage" />
-						</ul>
-					</div> --%>
 				</div>
 				</article>
 				<!-- .content -->
