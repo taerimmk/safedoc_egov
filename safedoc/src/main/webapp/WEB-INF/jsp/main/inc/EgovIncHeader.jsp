@@ -21,7 +21,7 @@
 		<div class="col-xs-6 col-md-2 col-lg-3 logo-box">
 		  <div class="logo">
 			<a href="<c:url value='/' />">
-			  <img src="<c:url value='/' />img/logo.svg" class="logo-img" alt="">
+			  <img src="<c:url value='/' />img/logo.png" class="logo-img" alt="">
 			</a>
 		  </div>
 		</div><!-- .logo-box -->
