@@ -26,7 +26,7 @@
   
   <!-- Font -->
   <!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic'> -->
-  
+  <link rel='stylesheet' href="<c:url value="/"/>css/nanumgothiccoding.css">
 
 
   <!-- Plagins CSS -->
@@ -59,7 +59,7 @@
   <!-- IE Styles-->
   <link rel='stylesheet' href="<c:url value="/"/>css/ie/ie.css">
   
-  <link rel='stylesheet' href="<c:url value="/"/>css/nanumgothiccoding.css">
+  
   
   
   
