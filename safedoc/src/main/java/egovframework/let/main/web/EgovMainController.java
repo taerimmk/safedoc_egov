@@ -14,16 +14,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import egovframework.com.cmm.ComDefaultVO;
 import egovframework.com.cmm.LoginVO;
-import egovframework.let.cop.bbs.service.BoardVO;
 import egovframework.let.cop.bbs.service.EgovBBSManageService;
 import egovframework.let.sym.mnu.mpm.service.EgovMenuManageService;
 import egovframework.let.sym.mnu.mpm.service.MenuManageVO;
 import egovframework.let.uss.olh.faq.service.EgovFaqManageService;
-import egovframework.let.uss.olh.faq.service.FaqManageDefaultVO;
 import egovframework.let.uss.olp.qri.service.EgovQustnrRespondInfoService;
 import egovframework.rte.fdl.security.userdetails.util.EgovUserDetailsHelper;
 import egovframework.rte.ptl.mvc.bind.annotation.CommandMap;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 /**
  * 템플릿 메인 페이지 컨트롤러 클래스(Sample 소스)
@@ -87,85 +84,7 @@ public class EgovMainController {
 	public String getMgtMainPage(HttpServletRequest request, ModelMap model)
 	  throws Exception{
 
-		// 공지사항 메인 컨텐츠 조회 시작 ---------------------------------
-		BoardVO boardVO = new BoardVO();
-		boardVO.setPageUnit(5);
-		boardVO.setPageSize(10);
-		boardVO.setBbsId("BBSMSTR_AAAAAAAAAAAA");
-
-		PaginationInfo paginationInfo = new PaginationInfo();
-
-		paginationInfo.setCurrentPageNo(boardVO.getPageIndex());
-		paginationInfo.setRecordCountPerPage(boardVO.getPageUnit());
-		paginationInfo.setPageSize(boardVO.getPageSize());
-
-		boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
-		boardVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-
-		Map<String, Object> map = bbsMngService.selectBoardArticles(boardVO, "BBSA02");
-		model.addAttribute("notiList", map.get("resultList"));
-
-
-		// 공지사항 메인컨텐츠 조회 끝 -----------------------------------
-
-		// 자유게시판 메인 컨텐츠 조회 시작 ---------------------------------
-		boardVO.setPageUnit(9);
-		boardVO.setPageSize(10);
-		boardVO.setBbsId("BBSMSTR_BBBBBBBBBBBB");
-
-		paginationInfo.setCurrentPageNo(boardVO.getPageIndex());
-		paginationInfo.setRecordCountPerPage(boardVO.getPageUnit());
-		paginationInfo.setPageSize(boardVO.getPageSize());
-
-		boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
-		boardVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-
-		model.addAttribute("bbsList", bbsMngService.selectBoardArticles(boardVO, "BBSA02").get("resultList"));
-
-		// 자유게시판 메인컨텐츠 조회 끝 -----------------------------------
-
-
-
-		// FAQ 메인 컨텐츠 조회 시작 ---------------------------------
-		/** EgovPropertyService.SiteList */
-		FaqManageDefaultVO searchVO = new FaqManageDefaultVO();
-		searchVO.setPageUnit(3);
-    	searchVO.setPageSize(10);
-
-    	/** pageing */
-    	paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
-		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
-		paginationInfo.setPageSize(searchVO.getPageSize());
-
-		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-
-        model.addAttribute("faqList", faqManageService.selectFaqList(searchVO));
-
-		// FAQ 메인 컨텐츠 조회 끝 -----------------------------------
-
-        // 설문참여 메인 컨텐츠 조회 시작 -----------------------------------
-        ComDefaultVO qVO = new ComDefaultVO();
-    	qVO.setPageUnit(1);
-    	qVO.setPageSize(10);
-
-    	/** pageing */
-		paginationInfo.setCurrentPageNo(qVO.getPageIndex());
-		paginationInfo.setRecordCountPerPage(qVO.getPageUnit());
-		paginationInfo.setPageSize(qVO.getPageSize());
-
-		qVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		qVO.setLastIndex(paginationInfo.getLastRecordIndex());
-		qVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-
-        model.addAttribute("qriList", egovQustnrRespondInfoService.selectQustnrRespondInfoManageList(qVO));
-
-     // 설문참여 메인 컨텐츠 조회 끝 -----------------------------------
-
-
+		
 		return "main/EgovMainView";
 	}
 

@@ -59,12 +59,14 @@ License URI: http://themeforest.net/licenses/regular_extended
 html,
 body {
   height: 100%;
+  font-family: 'Nanum Gothic Coding', sans-serif; 
 }
+
 .full-height {
   height: 100%;
 }
 body {
-  font-family: 'Arimo', sans-serif;
+  font-family: 'Nanum Gothic Coding', sans-serif;
   height: 100%;
   line-height: 1.6;
   -webkit-appearance: none;
@@ -91,7 +93,7 @@ input,
 button,
 select,
 textarea {
-  font-family: 'Arimo', sans-serif;
+  font-family: 'Nanum Gothic Coding', sans-serif;
 }
 .page-box {
   min-height: 100%;
