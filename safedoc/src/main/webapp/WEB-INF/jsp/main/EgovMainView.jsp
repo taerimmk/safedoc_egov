@@ -34,172 +34,19 @@
 	  <ul>
 		<li data-delay="7000" data-transition="fade" data-slotamount="7" data-masterspeed="2000">
 		  <div class="elements">
-			<div class="tp-caption lfl"
-			  data-x="211"
-			  data-y="203"
-			  data-speed="1000"
-			  data-start="1500"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn"
-			  style="z-index: 2">
-			  <img src="/img/content/slider/rs-slider4-img1.png" width="217" height="172" alt="">
-			</div>
 			
-			<div class="tp-caption lft"
-			  data-x="97"
-			  data-y="271"
-			  data-speed="1000"
+			<div class="tp-caption lfl skewtoleft"
+			  data-x="121"
+			  data-y="121"
+			  data-speed="1500"
 			  data-start="1000"
 			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn">
-			  <img src="/img/content/slider/rs-slider4-img2.png" width="71" height="104" alt="">
-			</div>
-			
-			<div class="tp-caption lft"
-			  data-x="479"
-			  data-y="271"
-			  data-speed="1000"
-			  data-start="1200"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn">
-			  <img src="/img/content/slider/rs-slider4-img2.png" width="71" height="104" alt="">
-			</div>
-			
-			<div class="tp-caption lfb"
-			  data-x="-32"
-			  data-y="372"
-			  data-speed="1000"
-			  data-start="1000"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn">
-			  <img src="/img/content/slider/rs-slider4-img3.png" width="764" height="76" alt="">
-			</div>
-			
-			<div class="tp-caption lft"
-			  data-x="166"
-			  data-y="167"
-			  data-speed="1000"
-			  data-start="1000"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn">
-			  <img src="/img/content/slider/rs-slider4-img4.png" width="247" height="71" alt="">
-			</div>
-			
-			<div class="tp-caption customin"
-			  data-x="177"
-			  data-y="62"
-			  data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 100%;"
-			  data-speed="700"
-			  data-start="1400"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
+			  data-endspeed="1000"
 			  data-endeasing="Power1.easeIn"
 			  style="z-index: 3">
-			  <img src="/img/content/slider/rs-slider4-img5.png" width="166" height="107" alt="">
+			  <img src="/img/content/slider/rs-slider4-img15.png" width="576" height="393" alt="">
 			</div>
-			
-			<div class="tp-caption lft"
-			  data-x="487"
-			  data-y="69"
-			  data-speed="1000"
-			  data-start="1500"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn"
-			  style="z-index: 1">
-			  <img src="/img/content/slider/rs-slider4-img6.png" width="104" height="157" alt="">
-			</div>
-			
-			<div class="tp-caption lfl"
-			  data-x="539"
-			  data-y="177"
-			  data-speed="1000"
-			  data-start="1000"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn"
-			  style="z-index: 3">
-			  <img src="/img/content/slider/rs-slider4-img7.png" width="95" height="197" alt="">
-			</div>
-			
-			<div class="tp-caption lfl lft"
-			  data-x="7"
-			  data-y="134"
-			  data-speed="1000"
-			  data-start="1700"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn"
-			  style="z-index: 3">
-			  <img src="/img/content/slider/rs-slider4-img8.png" width="275" height="240" alt="">
-			</div>
-			
-			<div class="tp-caption customin"
-			  data-x="375"
-			  data-y="78"
-			  data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-			  data-speed="1000"
-			  data-start="1500"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn">
-			  <img src="/img/content/slider/rs-slider4-img9.png" width="101" height="101" alt="">
-			</div>
-			
-			<div class="tp-caption lfb"
-			  data-x="141"
-			  data-y="297"
-			  data-speed="1000"
-			  data-start="1800"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn"
-			  style="z-index: 4">
-			  <img src="/img/content/slider/rs-slider4-img10.png" width="64" height="77" alt="">
-			</div>
-			
-			<div class="tp-caption lfl"
-			  data-x="428"
-			  data-y="356"
-			  data-speed="500"
-			  data-start="2000"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn"
-			  style="z-index: 3">
-			  <img src="/img/content/slider/rs-slider4-img11.png" width="35" height="14" alt="">
-			</div>
-			
-			<div class="tp-caption lfb"
-			  data-x="225"
-			  data-y="335"
-			  data-speed="1000"
-			  data-start="1880"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn"
-			  style="z-index: 4">
-			  <img src="/img/content/slider/rs-slider4-img12.png" width="33" height="25" alt="">
-			</div>
-			
-			<div class="tp-caption lfb"
-			  data-x="258"
-			  data-y="341"
-			  data-speed="1000"
-			  data-start="1960"
-			  data-easing="Power4.easeOut"
-			  data-endspeed="500"
-			  data-endeasing="Power1.easeIn"
-			  style="z-index: 4">
-			  <img src="/img/content/slider/rs-slider4-img13.png" width="33" height="25" alt="">
-			</div>
-			
-			<div class="tp-caption lfb"
+			<!-- <div class="tp-caption lfb"
 			  data-x="395"
 			  data-y="335"
 			  data-speed="1000"
@@ -208,9 +55,9 @@
 			  data-endspeed="500"
 			  data-endeasing="Power1.easeIn"
 			  style="z-index: 4">
-			  <img src="/img/content/slider/rs-slider4-img14.png" width="33" height="25" alt="">
+			  <img src="/img/content/slider/rs-slider4-img15.png" width="33" height="25" alt="">
 			</div>
-			
+			 -->
 			<h2 class="tp-caption lft skewtotop title"
 			  data-x="722"
 			  data-y="101"
