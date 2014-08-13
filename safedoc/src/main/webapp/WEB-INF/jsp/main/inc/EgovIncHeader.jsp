@@ -109,7 +109,6 @@
 					</li>
 					<% }else { %>
 					<c:set var="loginName" value="<%= loginVO.getName()%>"/>
-					TT: <%=loginVO.getUserSe()%>
 					<li class="parent">
 					  <a href="#"><c:out value="${loginName}"/> 님</a>
 					  <ul class="sub">
