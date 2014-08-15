@@ -11,258 +11,340 @@
     author   : 공통서비스 개발팀 이삼섭
     since    : 2009.03.19
 --%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ page import="egovframework.com.cmm.service.EgovProperties" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ page import="egovframework.com.cmm.service.EgovProperties"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<c:set var="ImgUrl" value="/images/egovframework/cop/bbs/"/>
+<c:set var="ImgUrl" value="/images/egovframework/cop/bbs/" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-<meta http-equiv="content-language" content="ko">
-<link rel="stylesheet" href="<c:url value='/'/>css/default.css" type="text/css" >
-<link href="<c:url value='${brdMstrVO.tmplatCours}' />" rel="stylesheet" type="text/css">
-<c:if test="${anonymous == 'true'}"><c:set var="prefix" value="/anonymous"/></c:if>
-<script type="text/javascript" src="<c:url value='/js/EgovBBSMng.js' />" ></script>
+<title><c:out value="${brdMstrVO.bbsNm}" /> 목록</title>
+<c:import url="/EgovPageLink.do?link=main/inc/headerResource" />
+<c:if test="${anonymous == 'true'}">
+	<c:set var="prefix" value="/anonymous" />
+</c:if>
+<script type="text/javascript" src="<c:url value='/js/EgovBBSMng.js' />"></script>
 <c:choose>
-<c:when test="${preview == 'true'}">
-<script type="text/javascript">
-<!--
-	function press(event) {
-	}
+	<c:when test="${preview == 'true'}">
+		<script type="text/javascript">
+		<!--
+			function press(event) {
+			}
 
-	function fn_egov_addNotice() {
-	}
+			function fn_egov_addNotice() {
+			}
 
-	function fn_egov_select_noticeList(pageNo) {
-	}
+			function fn_egov_select_noticeList(pageNo) {
+			}
 
-	function fn_egov_inqire_notice(nttId, bbsId) {
-	}
-//-->
-</script>
-</c:when>
-<c:otherwise>
-<script type="text/javascript">
-<!--
-	function press(event) {
-		if (event.keyCode==13) {
-			fn_egov_select_noticeList('1');
-		}
-	}
+			function fn_egov_inqire_notice(nttId, bbsId) {
+			}
+		//-->
+		</script>
+	</c:when>
+	<c:otherwise>
+		<script type="text/javascript">
+		<!--
+			function press(event) {
+				if (event.keyCode == 13) {
+					fn_egov_select_noticeList('1');
+				}
+			}
 
-	function fn_egov_addNotice() {
-		document.frm.action = "<c:url value='/cop/bbs${prefix}/addBoardArticle.do'/>";
-		document.frm.submit();
-	}
+			function fn_egov_addNotice() {
+				document.frm.action = "<c:url value='/cop/bbs${prefix}/addBoardArticle.do'/>";
+				document.frm.submit();
+			}
 
-	function fn_egov_select_noticeList(pageNo) {
-		document.frm.pageIndex.value = pageNo;
-		document.frm.action = "<c:url value='/cop/bbs${prefix}/selectBoardList.do'/>";
-		document.frm.submit();
-	}
+			function fn_egov_select_noticeList(pageNo) {
+				document.frm.pageIndex.value = pageNo;
+				document.frm.action = "<c:url value='/cop/bbs${prefix}/selectBoardList.do'/>";
+				document.frm.submit();
+			}
 
-	function fn_egov_inqire_notice(nttId, bbsId) {
-		//document.subForm.nttId.value = nttId;
-		//document.subForm.bbsId.value = bbsId;
-		//document.subForm.action = "<c:url value='/cop/bbs${prefix}/selectBoardArticle.do'/>";
-		//document.subForm.submit();
-	}
-//-->
-</script>
-</c:otherwise>
+			function fn_egov_inqire_notice(nttId, bbsId) {
+				//document.subForm.nttId.value = nttId;
+				//document.subForm.bbsId.value = bbsId;
+				//document.subForm.action = "<c:url value='/cop/bbs${prefix}/selectBoardArticle.do'/>";
+				//document.subForm.submit();
+			}
+		//-->
+		</script>
+	</c:otherwise>
 </c:choose>
-<title><c:out value="${brdMstrVO.bbsNm}"/> 목록</title>
-
-<style type="text/css">
-	h1 {font-size:12px;}
-	caption {visibility:hidden; font-size:0; height:0; margin:0; padding:0; line-height:0;}
-</style>
-
 </head>
 <body>
-<!-- login status start -->
-<div id="login_area"><c:import url="/EgovPageLink.do?link=main/inc/EgovIncTborder" /></div>
-<!-- //login status end -->
-<!-- wrap start -->
-<div id="wrap">
-    <!-- header start -->
-    <div id="subheader"><c:import url="/sym/mms/EgovMainMenuHead.do" /></div>
-    <!-- //header end -->
-    <!--  타이틀 이미지 시작 -->
-    <div id="title_img_div"><img src="<c:url value='/'/>images/title_image/img_title03.gif" alt="" /></div>
-    <!--  //타이틀 이미지 끝 -->
-    <div id="bodywrap">
-        <div id="leftmenu_div"><c:import url="/sym/mms/EgovMainMenuLeft.do" /></div>
-        <div id="middle_content">
-            <!-- 현재위치 네비게이션 시작 -->
-            <div id="cur_loc">
-                    <div id="cur_loc_align">
-                        <ul>
-                            <li>HOME</li>
-                            <li>&gt;</li>
-                            <li>알림마당</li>
-                            <li>&gt;</li>
-                            <li><strong>${brdMstrVO.bbsNm}</strong></li>
-                        </ul>
-                    </div>
-            </div>
-            <div id="content_field"><!--contents start-->
+	<div class="page-box">
+		<div class="page-box-content">
 
-			<form name="frm" action ="<c:url value='/cop/bbs${prefix}/selectBoardList.do'/>" method="post">
-			<input type="hidden" name="bbsId" value="<c:out value='${boardVO.bbsId}'/>" />
-			<input type="hidden" name="nttId"  value="0" />
-			<input type="hidden" name="bbsTyCode" value="<c:out value='${brdMstrVO.bbsTyCode}'/>" />
-			<input type="hidden" name="bbsAttrbCode" value="<c:out value='${brdMstrVO.bbsAttrbCode}'/>" />
-			<input type="hidden" name="authFlag" value="<c:out value='${brdMstrVO.authFlag}'/>" />
-			<input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-			<input type="submit" value="실행" onclick="fn_egov_select_noticeList('1'); return false;" id="invisible" class="invisible" />
+			<c:import url="/EgovPageLink.do?link=main/inc/EgovIncHeader" />
 
-			<!-- sub title start -->
-            <div><h2><c:out value="${brdMstrVO.bbsNm}"/></h2></div>
-            <!-- sub title end -->
+			<div class="breadcrumb-box">
+				<div class="container">
+					<ul class="breadcrumb">
+						Contact
+						</a>
+						</li>
+						<li><a href="#">견적문의</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- .breadcrumb-box -->
 
-            <!-- search area start-->
-            <div class="search_service">
-                <div class="search_area">
-	                <div class="search_conditions" >
-	                    <select name="searchCnd" class="select" title="검색조건 선택">
-					           <option value="0" <c:if test="${searchVO.searchCnd == '0'}">selected="selected"</c:if> >제목</option>
-					           <option value="1" <c:if test="${searchVO.searchCnd == '1'}">selected="selected"</c:if> >내용</option>
-					           <option value="2" <c:if test="${searchVO.searchCnd == '2'}">selected="selected"</c:if> >작성자</option>
-					    </select>
-					    <input name="searchWrd" type="text" size="35" value='<c:out value="${searchVO.searchWrd}"/>' maxlength="35" onkeypress="press(event);" title="검색어 입력">
-	                </div>
-	                <div class="search_buttons">
-				        <input type="submit" value="<spring:message code='button.inquire' />" onclick="fn_egov_select_noticeList('1'); return false;" />
-				        <c:if test="${brdMstrVO.authFlag == 'Y'}">
-				            <a href="<c:url value='/cop/bbs${prefix}/addBoardArticle.do?bbsId=${boardVO.bbsId}'/>"><spring:message code="button.create" /></a>
-				        </c:if>
-	                </div>
-                </div>
-            </div>
-            <!-- search area end -->
+			<section id="main"> <header class="page-header">
+			<div class="container">
+				<h1 class="title">${brdMstrVO.bbsNm}</h1>
+			</div>
+			</header>
+			<div class="container">
+				<div class="row">
 
-            </form>
+					<article class="content col-sm-12 col-md-12">
+					<div class="bs-docs-section">
+						<!-- <div class="bs-callout bs-callout-danger">
+							
+						</div> -->
+						<div class="bs-example">
+							<form name="frm"
+								action="<c:url value='/cop/bbs${prefix}/selectBoardList.do'/>"
+								method="post">
+								<input type="hidden" name="bbsId"
+									value="<c:out value='${boardVO.bbsId}'/>" /> <input
+									type="hidden" name="nttId" value="0" /> <input type="hidden"
+									name="bbsTyCode"
+									value="<c:out value='${brdMstrVO.bbsTyCode}'/>" /> <input
+									type="hidden" name="bbsAttrbCode"
+									value="<c:out value='${brdMstrVO.bbsAttrbCode}'/>" /> <input
+									type="hidden" name="authFlag"
+									value="<c:out value='${brdMstrVO.authFlag}'/>" /> <input
+									name="pageIndex" type="hidden"
+									value="<c:out value='${searchVO.pageIndex}'/>" /> <input
+									type="submit" value="실행"
+									onclick="fn_egov_select_noticeList('1'); return false;"
+									id="invisible" class="invisible" />
 
-<!-- search result start -->
-            <div class="search_result_div">
+								<!--실명확인을 위한  설정 End......-->
+								<!-- <div class="col-xs-2"> -->
+								<div class="form-group col-xs-2">
+									<select class="form-control" name="searchCnd">
+										<option value="0"
+											<c:if test="${searchVO.searchCnd == '0'}">selected="selected"</c:if>>제목</option>
+										<option value="1"
+											<c:if test="${searchVO.searchCnd == '1'}">selected="selected"</c:if>>내용</option>
+										<option value="2"
+											<c:if test="${searchVO.searchCnd == '2'}">selected="selected"</c:if>>작성자</option>
+									</select>
+								</div>
+								<div class="form-group col-xs-4">
+									<label class="sr-only" for="exampleInputPassword2">search</label>
+									<input type="text" class="form-control"
+										id="exampleInputPassword2" placeholder="검색어"
+										name="searchWrd"
+										onkeypress="press(event);"
+										value='<c:out value="${searchVO.searchWrd}"/>' 
+										maxlength="35">
+								</div>
 
-                <table width="98%" cellpadding="0" cellspacing="0" summary="번호, 제목, 게시시작일, 게시종료일, 작성자, 작성일, 조회수   입니다">
-                <caption>게시물목록</caption>
+								<button type="button" class="btn btn-default"
+									onclick="fn_egov_select_noticeList('1'); return false;">검색</button>
+								<c:if test="${brdMstrVO.authFlag == 'Y'}">
+									<a
+										href="<c:url value='/cop/bbs${prefix}/addBoardArticle.do?bbsId=${boardVO.bbsId}'/>"><button
+											type="button" class="btn btn-info">등록</button></a>
+								</c:if>
+							</form>
+						</div>
+						<table class="table table-bordered table-hover">
+							<%-- <colgroup>
+								<col width="5%">
+								<col>
+								<c:if test="${brdMstrVO.bbsAttrbCode == 'BBSA01'}">
+									<col width="15%">
+									<col width="15%">
+								</c:if>
+								<c:if test="${anonymous != 'true'}">
+									<col width="10%">
+								</c:if>
+								<col width="15%">
+								<col width="5%">
+							</colgroup> --%>
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>제목</th>
+									<c:if test="${brdMstrVO.bbsAttrbCode == 'BBSA01'}">
+										<th>게시시작일</th>
+										<th>게시종료일</th>
+									</c:if>
+									<c:if test="${anonymous != 'true'}">
+										<th>작성자</th>
+									</c:if>
+									<th>작성일</th>
+									<th>조회수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:if test="${fn:length(resultList) == 0}">
+									<tr>
+										<c:choose>
+											<c:when test="${brdMstrVO.bbsAttrbCode == 'BBSA01'}">
+												<td colspan="7"><spring:message
+														code="common.nodata.msg" /></td>
+											</c:when>
+											<c:otherwise>
+												<c:choose>
+													<c:when test="${anonymous == 'true'}">
+														<td colspan="4"><spring:message
+																code="common.nodata.msg" /></td>
+													</c:when>
+													<c:otherwise>
+														<td colspan="5"><spring:message
+																code="common.nodata.msg" /></td>
+													</c:otherwise>
+												</c:choose>
+											</c:otherwise>
+										</c:choose>
+									</tr>
+								</c:if>
 
-                <colgroup>
-                    <col width="5%" >
-                    <col >
-                    <c:if test="${brdMstrVO.bbsAttrbCode == 'BBSA01'}">
-                      <col width="15%" >
-                      <col width="15%" >
-                    </c:if>
-                    <c:if test="${anonymous != 'true'}">
-                      <col width="10%" >
-                    </c:if>
-                    <col width="15%" >
-                    <col width="5%" >
-                </colgroup>
-
-                <thead>
-                <tr>
-                    <th>번호</th>
-				    <th>제목</th>
-				    <c:if test="${brdMstrVO.bbsAttrbCode == 'BBSA01'}">
-				        <th>게시시작일</th>
-				        <th>게시종료일</th>
-				    </c:if>
-				    <c:if test="${anonymous != 'true'}">
-				        <th>작성자</th>
-				    </c:if>
-				    <th>작성일</th>
-				    <th>조회수</th>
-                </tr>
-                </thead>
-
-                <tbody>
-				<c:if test="${fn:length(resultList) == 0}">
-			        <tr>
-			        <c:choose>
-			            <c:when test="${brdMstrVO.bbsAttrbCode == 'BBSA01'}">
-			                <td colspan="7" ><spring:message code="common.nodata.msg" /></td>
-			            </c:when>
-			            <c:otherwise>
-			                <c:choose>
-			                    <c:when test="${anonymous == 'true'}">
-			                        <td colspan="4" ><spring:message code="common.nodata.msg" /></td>
-			                    </c:when>
-			                    <c:otherwise>
-			                        <td colspan="5" ><spring:message code="common.nodata.msg" /></td>
-			                    </c:otherwise>
-			                </c:choose>
-			            </c:otherwise>
-			          </c:choose>
-			          </tr>
-			     </c:if>
-                 <c:forEach var="result" items="${resultList}" varStatus="status">
-			     <tr>
-			        <!--td class="lt_text3" nowrap="nowrap"><input type="checkbox" name="check1" class="check2"></td-->
-			        <td ><c:out value="${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageSize + status.count)}"/></td>
-			        <td align="left">
-			        <form name="subForm" method="post" action="<c:url value='/cop/bbs${prefix}/selectBoardArticle.do'/>">
-			            <c:if test="${result.replyLc!=0}">
-			                <c:forEach begin="0" end="${result.replyLc}" step="1">
+								<c:forEach var="result" items="${resultList}" varStatus="status">
+									<tr>
+										<td class="lt_text3"><c:out
+												value="${paginationInfo.totalRecordCount+1 - ((searchVO.pageIndex-1) * searchVO.pageSize + status.count)}" /></td>
+										<td align="left" class="lt_text3">
+											<form name="subForm" method="post"
+												action="<c:url value='/cop/bbs${prefix}/selectBoardArticle.do'/>">
+												<c:if test="${result.replyLc!=0}">
+													<c:forEach begin="0" end="${result.replyLc}" step="1">
 			                    &nbsp;
 			                </c:forEach>
-			                <img src="<c:url value='/images/reply_arrow.gif'/>" alt="reply arrow">
-			            </c:if>
-			            <c:choose>
-			                <c:when test="${result.isExpired=='Y' || result.useAt == 'N'}">
-			                    <c:out value="${result.nttSj}" />
-			                </c:when>
-			                <c:otherwise>
-			                        <input type="hidden" name="bbsId" value="<c:out value='${result.bbsId}'/>" />
-			                        <input type="hidden" name="nttId"  value="<c:out value="${result.nttId}"/>" />
-			                        <input type="hidden" name="bbsTyCode" value="<c:out value='${brdMstrVO.bbsTyCode}'/>" />
-			                        <input type="hidden" name="bbsAttrbCode" value="<c:out value='${brdMstrVO.bbsAttrbCode}'/>" />
-			                        <input type="hidden" name="authFlag" value="<c:out value='${brdMstrVO.authFlag}'/>" />
-			                        <input name="pageIndex" type="hidden" value="<c:out value='${searchVO.pageIndex}'/>"/>
-			                        <span class="link"><input type="submit" style="width:320px;border:solid 0px black;text-align:left;" value="<c:out value="${result.nttSj}"/>" ></span>
-			                </c:otherwise>
-			            </c:choose>
-			            </form>
-			        </td>
-			        <c:if test="${brdMstrVO.bbsAttrbCode == 'BBSA01'}">
-			            <td ><c:out value="${result.ntceBgnde}"/></td>
-			            <td ><c:out value="${result.ntceEndde}"/></td>
-			        </c:if>
-			        <c:if test="${anonymous != 'true'}">
-			            <td ><c:out value="${result.frstRegisterNm}"/></td>
-			        </c:if>
-			        <td ><c:out value="${result.frstRegisterPnttm}"/></td>
-			        <td ><c:out value="${result.inqireCo}"/></td>
-			     </tr>
-			     </c:forEach>
-                 </tbody>
+													<img src="<c:url value='/images/reply_arrow.gif'/>"
+														alt="reply arrow">
+												</c:if>
+												<c:choose>
+													<c:when
+														test="${result.isExpired=='Y' || result.useAt == 'N'}">
+														<c:out value="${result.nttSj}" />
+													</c:when>
+													<c:otherwise>
+														<input type="hidden" name="bbsId"
+															value="<c:out value='${result.bbsId}'/>" />
+														<input type="hidden" name="nttId"
+															value="<c:out value="${result.nttId}"/>" />
+														<input type="hidden" name="bbsTyCode"
+															value="<c:out value='${brdMstrVO.bbsTyCode}'/>" />
+														<input type="hidden" name="bbsAttrbCode"
+															value="<c:out value='${brdMstrVO.bbsAttrbCode}'/>" />
+														<input type="hidden" name="authFlag"
+															value="<c:out value='${brdMstrVO.authFlag}'/>" />
+														<input name="pageIndex" type="hidden"
+															value="<c:out value='${searchVO.pageIndex}'/>" />
+														<span class="link"><input type="submit"
+															style="width: 320px; border: solid 0px black; text-align: left;"
+															value="<c:out value="${result.nttSj}"/>"></span>
+													</c:otherwise>
+												</c:choose>
+											</form>
+										</td>
+										<c:if test="${brdMstrVO.bbsAttrbCode == 'BBSA01'}">
+											<td class="lt_text3"><c:out value="${result.ntceBgnde}" /></td>
+											<td class="lt_text3"><c:out value="${result.ntceEndde}" /></td>
+										</c:if>
+										<c:if test="${anonymous != 'true'}">
+											<td class="lt_text3"><c:out
+													value="${result.frstRegisterNm}" /></td>
+										</c:if>
+										<td class="lt_text3"><c:out
+												value="${result.frstRegisterPnttm}" /></td>
+										<td class="lt_text3"><c:out value="${result.inqireCo}" /></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						<div class="pagination-box">
+							<ul class="pagination">
+								<ui:pagination paginationInfo="${paginationInfo}" type="image"
+									jsFunction="fn_egov_select_linkPage" />
+							</ul>
+						</div>
+						<!-- .pagination-box -->
 
-                 </table>
-            </div>
-            <!-- search result end -->
 
-			<div id="paging_div"><ul class="paging_align">
-				<ui:pagination paginationInfo="${paginationInfo}" type="image" jsFunction="fn_egov_select_noticeList" />
-				</ul>
+					</div>
+				</div>
+				</article>
+				<!-- .content -->
+
 			</div>
+		</div>
+		</section>
+		<!-- #main -->
 
-            </div><!-- contents end -->
-        </div>
-    </div>
-    <!-- footer 시작 -->
-    <div id="footer"><c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" /></div>
-    <!-- //footer 끝 -->
-</div>
-<!-- //wrap end -->
+	</div>
+	<!-- .page-box-content -->
+	</div>
+	<!-- .page-box -->
 
+	<c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" />
+	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />
+	<script type="text/javaScript" language="javascript">
+		/*********************************************************
+		 * 초기화
+		 ******************************************************** */
+		function fn_egov_initl_qnalist() {
 
+			// 첫 입력란에 포커스..
+			document.QnaListForm.searchKeyword.focus();
+
+		}
+
+		/*********************************************************
+		 * 페이징 처리 함수
+		 ******************************************************** */
+		function fn_egov_select_linkPage(pageNo) {
+
+			document.QnaListForm.pageIndex.value = pageNo;
+			document.QnaListForm.action = "<c:url value='/uss/olh/qna/QnaListInqire.do'/>";
+			document.QnaListForm.submit();
+
+		}
+
+		/*********************************************************
+		 * 조회 처리 함수
+		 ******************************************************** */
+		function fn_egov_search_qnacn() {
+
+			document.QnaListForm.pageIndex.value = 1;
+			document.QnaListForm.submit();
+
+		}
+
+		/*********************************************************
+		 * Q&A 등록화면 호출
+		 ******************************************************** */
+		function fn_egov_regist_cnsltcn() {
+
+			document.QnaListForm.action = "<c:url value='/uss/olh/qna/QnaCnRegistView.do'/>";
+			document.QnaListForm.submit();
+
+		}
+
+		/* ********************************************************
+		 * 상세회면 처리 함수
+		 ******************************************************** */
+		function fn_egov_inquire_qnadetail(qaId) {
+
+			// 사이트 키값(siteId) 셋팅.
+			document.QnaListForm.qaId.value = qaId;
+			//  document.QnaListForm.action = "<c:url value='/uss/olh/qna/QnaDetailInqire.do'/>";
+			document.QnaListForm.action = "<c:url value='/uss/olh/qna/QnaInqireCoUpdt.do'/>";
+			document.QnaListForm.submit();
+
+		}
+	</script>
 </body>
 </html>
