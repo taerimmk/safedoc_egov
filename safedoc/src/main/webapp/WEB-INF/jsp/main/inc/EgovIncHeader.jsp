@@ -95,7 +95,9 @@
 					<li class="parent">
 					  <a href="#">Contact</a>
 					  <ul class="sub">
-						<li><a href="sidebar-blocks.html">견적문의</a></li>
+					  
+					  
+						<li><a href="<c:url value="/cop/bbs/sec/selectBoardList.do?bbsId=BBSMSTR_000000000001"/>">견적문의</a></li>
 						<!-- <li><a href="sidebar-blocks.html">방명록</a></li> -->
 					  </ul><!-- .sub -->
 					</li>
