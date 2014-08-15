@@ -24,8 +24,8 @@
 <head>
 <title><c:out value="${brdMstrVO.bbsNm}" /> 목록</title>
 <c:import url="/EgovPageLink.do?link=main/inc/headerResource" />
-<c:if test="${anonymous == 'true'}">
-	<c:set var="prefix" value="/anonymous" />
+<c:if test="${sec == 'true'}">
+	<c:set var="prefix" value="/sec" />
 </c:if>
 <script type="text/javascript" src="<c:url value='/js/EgovBBSMng.js' />"></script>
 <c:choose>
@@ -86,8 +86,7 @@
 			<div class="breadcrumb-box">
 				<div class="container">
 					<ul class="breadcrumb">
-						Contact
-						</a>
+						<li>Contact </a>
 						</li>
 						<li><a href="#">견적문의</a></li>
 					</ul>
@@ -142,11 +141,9 @@
 								<div class="form-group col-xs-4">
 									<label class="sr-only" for="exampleInputPassword2">search</label>
 									<input type="text" class="form-control"
-										id="exampleInputPassword2" placeholder="검색어"
-										name="searchWrd"
+										id="exampleInputPassword2" placeholder="검색어" name="searchWrd"
 										onkeypress="press(event);"
-										value='<c:out value="${searchVO.searchWrd}"/>' 
-										maxlength="35">
+										value='<c:out value="${searchVO.searchWrd}"/>' maxlength="35">
 								</div>
 
 								<button type="button" class="btn btn-default"
@@ -166,7 +163,7 @@
 									<col width="15%">
 									<col width="15%">
 								</c:if>
-								<c:if test="${anonymous != 'true'}">
+								<c:if test="${sec != 'true'}">
 									<col width="10%">
 								</c:if>
 								<col width="15%">
@@ -180,7 +177,7 @@
 										<th>게시시작일</th>
 										<th>게시종료일</th>
 									</c:if>
-									<c:if test="${anonymous != 'true'}">
+									<c:if test="${sec != 'true'}">
 										<th>작성자</th>
 									</c:if>
 									<th>작성일</th>
@@ -197,7 +194,7 @@
 											</c:when>
 											<c:otherwise>
 												<c:choose>
-													<c:when test="${anonymous == 'true'}">
+													<c:when test="${sec == 'true'}">
 														<td colspan="4"><spring:message
 																code="common.nodata.msg" /></td>
 													</c:when>
@@ -254,7 +251,7 @@
 											<td class="lt_text3"><c:out value="${result.ntceBgnde}" /></td>
 											<td class="lt_text3"><c:out value="${result.ntceEndde}" /></td>
 										</c:if>
-										<c:if test="${anonymous != 'true'}">
+										<c:if test="${sec != 'true'}">
 											<td class="lt_text3"><c:out
 													value="${result.frstRegisterNm}" /></td>
 										</c:if>
@@ -280,71 +277,16 @@
 				<!-- .content -->
 
 			</div>
-		</div>
-		</section>
-		<!-- #main -->
+			</section>
+			<!-- #main -->
 
-	</div>
-	<!-- .page-box-content -->
+		</div>
+		<!-- .page-box-content -->
 	</div>
 	<!-- .page-box -->
 
 	<c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" />
 	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />
-	<script type="text/javaScript" language="javascript">
-		/*********************************************************
-		 * 초기화
-		 ******************************************************** */
-		function fn_egov_initl_qnalist() {
 
-			// 첫 입력란에 포커스..
-			document.QnaListForm.searchKeyword.focus();
-
-		}
-
-		/*********************************************************
-		 * 페이징 처리 함수
-		 ******************************************************** */
-		function fn_egov_select_linkPage(pageNo) {
-
-			document.QnaListForm.pageIndex.value = pageNo;
-			document.QnaListForm.action = "<c:url value='/uss/olh/qna/QnaListInqire.do'/>";
-			document.QnaListForm.submit();
-
-		}
-
-		/*********************************************************
-		 * 조회 처리 함수
-		 ******************************************************** */
-		function fn_egov_search_qnacn() {
-
-			document.QnaListForm.pageIndex.value = 1;
-			document.QnaListForm.submit();
-
-		}
-
-		/*********************************************************
-		 * Q&A 등록화면 호출
-		 ******************************************************** */
-		function fn_egov_regist_cnsltcn() {
-
-			document.QnaListForm.action = "<c:url value='/uss/olh/qna/QnaCnRegistView.do'/>";
-			document.QnaListForm.submit();
-
-		}
-
-		/* ********************************************************
-		 * 상세회면 처리 함수
-		 ******************************************************** */
-		function fn_egov_inquire_qnadetail(qaId) {
-
-			// 사이트 키값(siteId) 셋팅.
-			document.QnaListForm.qaId.value = qaId;
-			//  document.QnaListForm.action = "<c:url value='/uss/olh/qna/QnaDetailInqire.do'/>";
-			document.QnaListForm.action = "<c:url value='/uss/olh/qna/QnaInqireCoUpdt.do'/>";
-			document.QnaListForm.submit();
-
-		}
-	</script>
 </body>
 </html>

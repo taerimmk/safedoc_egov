@@ -148,7 +148,7 @@ public class EgovSecBBSManageController {
 	BoardMasterVO vo = new BoardMasterVO();
 
 	vo.setBbsId(boardVO.getBbsId());
-	vo.setUniqId("ANONYMOUS");	// 익명
+	vo.setUniqId("SEC");	// 익명
 
 	BoardMasterVO master = bbsAttrbService.selectBBSMasterInf(vo);
 
@@ -192,7 +192,7 @@ public class EgovSecBBSManageController {
 	model.addAttribute("brdMstrVO", master);
 	model.addAttribute("paginationInfo", paginationInfo);
 
-	model.addAttribute("anonymous", "true");
+	model.addAttribute("sec", "true");
 
 	return "cop/bbs/sec/EgovNoticeList";
     }
@@ -217,7 +217,7 @@ public class EgovSecBBSManageController {
 	if (isAuthenticated) {
 	    BoardMasterVO vo = new BoardMasterVO();
 	    vo.setBbsId(boardVO.getBbsId());
-	    vo.setUniqId("ANONYMOUS");
+	    vo.setUniqId("SEC");
 
 	    bdMstr = bbsAttrbService.selectBBSMasterInf(vo);
 	    model.addAttribute("bdMstr", bdMstr);
@@ -241,7 +241,7 @@ public class EgovSecBBSManageController {
 	model.addAttribute("brdMstrVO", bdMstr);
 	////-----------------------------
 
-	model.addAttribute("anonymous", "true");
+	model.addAttribute("sec", "true");
 
 	return "cop/bbs/sec/EgovNoticeRegist";
     }
@@ -272,7 +272,7 @@ public class EgovSecBBSManageController {
 	    BoardMasterVO vo = new BoardMasterVO();
 
 	    vo.setBbsId(boardVO.getBbsId());
-	    vo.setUniqId("ANONYMOUS");
+	    vo.setUniqId("SEC");
 
 	    master = bbsAttrbService.selectBBSMasterInf(vo);
 
@@ -296,7 +296,7 @@ public class EgovSecBBSManageController {
 	    model.addAttribute("brdMstrVO", master);
 	    ////-----------------------------
 
-	    model.addAttribute("anonymous", "true");
+	    model.addAttribute("sec", "true");
 
 	    return "cop/bbs/sec/EgovNoticeRegist";
 	}
@@ -311,7 +311,7 @@ public class EgovSecBBSManageController {
 		atchFileId = fileMngService.insertFileInfs(result);
 	    }
 	    board.setAtchFileId(atchFileId);
-	    board.setFrstRegisterId("ANONYMOUS");
+	    board.setFrstRegisterId("SEC");
 	    board.setBbsId(board.getBbsId());
 
 	    // 익명게시판 관련
@@ -324,7 +324,7 @@ public class EgovSecBBSManageController {
 	}
 
 	//status.setComplete();
-	return "forward:/cop/bbs/anonymous/selectBoardList.do";
+	return "forward:/cop/bbs/sec/selectBoardList.do";
     }
 
     /**
@@ -351,11 +351,11 @@ public class EgovSecBBSManageController {
 	}
 	////-------------------------------
 
-	boardVO.setLastUpdusrId("ANONYMOUS");
+	boardVO.setLastUpdusrId("SEC");
 	BoardVO vo = bbsMngService.selectBoardArticle(boardVO);
 
 	model.addAttribute("result", vo);
-	model.addAttribute("sessionUniqId", "ANONYMOUS");
+	model.addAttribute("sessionUniqId", "SEC");
 
 	//----------------------------
 	// template 처리 (기본 BBS template 지정  포함)
@@ -363,7 +363,7 @@ public class EgovSecBBSManageController {
 	BoardMasterVO master = new BoardMasterVO();
 
 	master.setBbsId(boardVO.getBbsId());
-	master.setUniqId("ANONYMOUS");
+	master.setUniqId("SEC");
 
 	BoardMasterVO masterVo = bbsAttrbService.selectBBSMasterInf(master);
 
@@ -382,7 +382,7 @@ public class EgovSecBBSManageController {
 	model.addAttribute("brdMstrVO", masterVo);
 	////-----------------------------
 
-	model.addAttribute("anonymous", "true");
+	model.addAttribute("sec", "true");
 
 	//----------------------------
 	// 2009.06.29 : 2단계 기능 추가
@@ -427,7 +427,7 @@ public class EgovSecBBSManageController {
 	BoardMasterVO master = new BoardMasterVO();
 
 	master.setBbsId(boardVO.getBbsId());
-	master.setUniqId("ANONYMOUS");
+	master.setUniqId("SEC");
 
 	BoardMasterVO masterVo = bbsAttrbService.selectBBSMasterInf(master);
 
@@ -454,7 +454,7 @@ public class EgovSecBBSManageController {
 	////-----------------------------
 
 	if (isAuthenticated) {
-	    board.setLastUpdusrId("ANONYMOUS");
+	    board.setLastUpdusrId("SEC");
 
 	    bbsMngService.deleteBoardArticle(board);
 	}
@@ -483,7 +483,7 @@ public class EgovSecBBSManageController {
 	//Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
 	Boolean isAuthenticated = true;
 
-	boardVO.setFrstRegisterId("ANONYMOUS");
+	boardVO.setFrstRegisterId("SEC");
 
 	BoardMaster master = new BoardMaster();
 	BoardMasterVO bmvo = new BoardMasterVO();
@@ -492,7 +492,7 @@ public class EgovSecBBSManageController {
 	vo.setBbsId(boardVO.getBbsId());
 
 	master.setBbsId(boardVO.getBbsId());
-	master.setUniqId("ANONYMOUS");
+	master.setUniqId("SEC");
 
 	if (isAuthenticated) {
 	    bmvo = bbsAttrbService.selectBBSMasterInf(master);
@@ -535,7 +535,7 @@ public class EgovSecBBSManageController {
 	model.addAttribute("brdMstrVO", bmvo);
 	////-----------------------------
 
-	model.addAttribute("anonymous", "true");
+	model.addAttribute("sec", "true");
 
 	return "cop/bbs/sec/EgovNoticeUpdt";
     }
@@ -564,14 +564,14 @@ public class EgovSecBBSManageController {
 	beanValidator.validate(board, bindingResult);
 	if (bindingResult.hasErrors()) {
 
-	    boardVO.setFrstRegisterId("ANONYMOUS");
+	    boardVO.setFrstRegisterId("SEC");
 
 	    BoardMaster master = new BoardMaster();
 	    BoardMasterVO bmvo = new BoardMasterVO();
 	    BoardVO bdvo = new BoardVO();
 
 	    master.setBbsId(boardVO.getBbsId());
-	    master.setUniqId("ANONYMOUS");
+	    master.setUniqId("SEC");
 
 	    bmvo = bbsAttrbService.selectBBSMasterInf(master);
 
@@ -588,7 +588,7 @@ public class EgovSecBBSManageController {
 	    model.addAttribute("result", bdvo);
 	    model.addAttribute("bdMstr", bmvo);
 
-	    model.addAttribute("anonymous", "true");
+	    model.addAttribute("sec", "true");
 
 	    return "cop/bbs/sec/EgovNoticeUpdt";
 	}
@@ -609,7 +609,7 @@ public class EgovSecBBSManageController {
 		}
 	    }
 
-	    board.setLastUpdusrId("ANONYMOUS");
+	    board.setLastUpdusrId("SEC");
 
 	    // 익명게시판 관련
 	    board.setNtcrNm(board.getNtcrNm());
@@ -640,7 +640,7 @@ public class EgovSecBBSManageController {
 	BoardMasterVO vo = new BoardMasterVO();
 
 	vo.setBbsId(boardVO.getBbsId());
-	vo.setUniqId("ANONYMOUS");
+	vo.setUniqId("SEC");
 
 	master = bbsAttrbService.selectBBSMasterInf(vo);
 
@@ -665,7 +665,7 @@ public class EgovSecBBSManageController {
 	model.addAttribute("brdMstrVO", master);
 	////-----------------------------
 
-	model.addAttribute("anonymous", "true");
+	model.addAttribute("sec", "true");
 
 	return "cop/bbs/sec/EgovNoticeReply";
     }
@@ -695,7 +695,7 @@ public class EgovSecBBSManageController {
 	    BoardMasterVO vo = new BoardMasterVO();
 
 	    vo.setBbsId(boardVO.getBbsId());
-	    vo.setUniqId("ANONYMOUS");
+	    vo.setUniqId("SEC");
 
 	    master = bbsAttrbService.selectBBSMasterInf(vo);
 
@@ -720,7 +720,7 @@ public class EgovSecBBSManageController {
 	    model.addAttribute("brdMstrVO", master);
 	    ////-----------------------------
 
-	    model.addAttribute("anonymous", "true");
+	    model.addAttribute("sec", "true");
 
 	    return "cop/bbs/sec/EgovNoticeReply";
 	}
@@ -736,7 +736,7 @@ public class EgovSecBBSManageController {
 
 	    board.setAtchFileId(atchFileId);
 	    board.setReplyAt("Y");
-	    board.setFrstRegisterId("ANONYMOUS");
+	    board.setFrstRegisterId("SEC");
 	    board.setBbsId(board.getBbsId());
 	    board.setParnts(Long.toString(boardVO.getNttId()));
 	    board.setSortOrdr(boardVO.getSortOrdr());
