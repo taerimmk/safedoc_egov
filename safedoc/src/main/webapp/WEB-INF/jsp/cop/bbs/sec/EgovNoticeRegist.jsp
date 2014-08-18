@@ -118,7 +118,7 @@
 							<input type="hidden" name="authFlag"
 								value="<c:out value='${bdMstr.authFlag}'/>" />
 
-							<c:if test="${sec != 'true'}">
+							<c:if test="${sec == 'true'}">
 								<input type="hidden" name="ntcrNm" value="dummy">
 								<!-- validator 처리를 위해 지정 -->
 								<input type="hidden" name="password" value="dummy">
@@ -168,6 +168,8 @@
 								</li>
 							</ul>
 						</form:form>
+						
+						
 						<div class="buttons" align="center" style="margin-bottom: 100px">
 							<c:if test="${bdMstr.authFlag == 'Y'}">
 								<a href="#LINK" class="btn btn-success"

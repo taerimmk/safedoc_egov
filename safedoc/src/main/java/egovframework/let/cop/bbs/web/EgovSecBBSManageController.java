@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,6 +27,7 @@ import egovframework.let.cop.bbs.service.BoardMasterVO;
 import egovframework.let.cop.bbs.service.BoardVO;
 import egovframework.let.cop.bbs.service.EgovBBSAttributeManageService;
 import egovframework.let.cop.bbs.service.EgovBBSManageService;
+import egovframework.let.uss.olh.qna.web.EgovQnaManageController;
 import egovframework.let.utl.sim.service.EgovFileScrty;
 import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
@@ -50,7 +53,7 @@ import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
  */
 @Controller
 public class EgovSecBBSManageController {
-
+	private static final Logger logger = LoggerFactory.getLogger(EgovSecBBSManageController.class);
     @Resource(name = "EgovBBSManageService")
     private EgovBBSManageService bbsMngService;
 
@@ -266,6 +269,7 @@ public class EgovSecBBSManageController {
 	Boolean isAuthenticated = true;
 
 	beanValidator.validate(board, bindingResult);
+	logger.debug("==================]bindingResult[============ {}",bindingResult.toString());
 	if (bindingResult.hasErrors()) {
 
 	    BoardMasterVO master = new BoardMasterVO();
