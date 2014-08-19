@@ -164,7 +164,20 @@
 								<b>조회수:&nbsp;&nbsp;</b><span><c:out
 										value="${result.inqireCo}" /></span>
 							</p>
-
+							
+							<p>
+								<b>비밀번호 확인:&nbsp;&nbsp;</b><span>
+								<input
+										type="password" name="password" value="" class="form-control-a"
+										placeholder="비밀번호" /></span>
+							</p>
+							<!-- <div class="col-sm-9 col-md-9">
+								<div class="form-group has-feedback ">
+									<label>비밀번호 <span class="required">*</span></label> <input
+										type="password" name="password" value="" class="form-control"
+										placeholder="비밀번호 확인" /> <small class="help-block"></small>
+								</div>
+							</div> -->
 							<c:if test="${result.frstRegisterId == sessionUniqId}">
 								<a href="#LINK" class="btn btn-warning"
 									onclick="javascript:fn_egov_moveUpdt_notice(); return false;">수정</a>
@@ -191,7 +204,7 @@
 		<!-- .page-box-content -->
 	</div>
 	<!-- .page-box -->
-	
+
 
 	<c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" />
 	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />

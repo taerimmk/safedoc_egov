@@ -123,17 +123,10 @@
 							<input type="hidden" name="cal_url"
 								value="<c:url value='/sym/cmm/EgovNormalCalPopup.do'/>" />
 
-							<c:if test="${sec != 'true'}">
+							<c:if test="${sec == 'true'}">
 								<input type="hidden" name="ntcrNm" value="dummy">
 								<!-- validator 처리를 위해 지정 -->
 								<input type="hidden" name="password" value="dummy">
-								<!-- validator 처리를 위해 지정 -->
-							</c:if>
-
-							<c:if test="${sec == 'true'}">
-								<input type="text" name="ntcrNm" value="" />
-								<!-- validator 처리를 위해 지정 -->
-								<input type="password" name="password" value="" />
 								<!-- validator 처리를 위해 지정 -->
 							</c:if>
 

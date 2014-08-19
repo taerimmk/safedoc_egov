@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import egovframework.com.cmm.EgovMessageSource;
+import egovframework.com.cmm.LoginVO;
 import egovframework.com.cmm.service.EgovFileMngService;
 import egovframework.com.cmm.service.EgovFileMngUtil;
 import egovframework.com.cmm.service.FileVO;
@@ -31,11 +32,9 @@ import egovframework.let.cop.bbs.service.BoardMasterVO;
 import egovframework.let.cop.bbs.service.BoardVO;
 import egovframework.let.cop.bbs.service.EgovBBSAttributeManageService;
 import egovframework.let.cop.bbs.service.EgovBBSManageService;
-import egovframework.let.uss.olh.qna.service.QnaManageDefaultVO;
-import egovframework.let.uss.olh.qna.service.QnaManageVO;
-import egovframework.let.uss.olh.qna.web.EgovQnaManageController;
 import egovframework.let.utl.sim.service.EgovFileScrty;
 import egovframework.rte.fdl.property.EgovPropertyService;
+import egovframework.rte.fdl.security.userdetails.util.EgovUserDetailsHelper;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 //import org.apache.log4j.Logger;
@@ -677,8 +676,9 @@ public class EgovSecBBSManageController {
 
 			// 익명게시판 관련
 			board.setNtcrNm(board.getNtcrNm());
-			board.setPassword(EgovFileScrty.encryptPassword(board.getPassword()));
-
+			//board.setPassword(EgovFileScrty.encryptPassword(board.getPassword()));
+			String dbpassword = bbsMngService.getPasswordInf(boardVO);
+			board.setPassword(dbpassword);
 			board.setNttCn(unscript(board.getNttCn())); // XSS 방지
 
 			bbsMngService.updateBoardArticle(board);
@@ -696,6 +696,7 @@ public class EgovSecBBSManageController {
 	 * @return
 	 * @throws Exception
 	 */
+	@Secured({"ROLE_ADMIN"})
 	@RequestMapping("/cop/bbs/sec/addReplyBoardArticle.do")
 	public String addAnonymousReplyBoardArticle(
 			@ModelAttribute("searchVO") BoardVO boardVO, ModelMap model)
@@ -747,6 +748,7 @@ public class EgovSecBBSManageController {
 	 * @return
 	 * @throws Exception
 	 */
+	@Secured({"ROLE_ADMIN"})
 	@RequestMapping("/cop/bbs/sec/replyBoardArticle.do")
 	public String replyAnonymousBoardArticle(
 			final MultipartHttpServletRequest multiRequest,
@@ -755,9 +757,9 @@ public class EgovSecBBSManageController {
 			@ModelAttribute("board") Board board, BindingResult bindingResult,
 			ModelMap model, SessionStatus status) throws Exception {
 
-		// LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
-		// Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
-		Boolean isAuthenticated = true;
+		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
+		//Boolean isAuthenticated = true;
 
 		beanValidator.validate(board, bindingResult);
 		if (bindingResult.hasErrors()) {
@@ -805,7 +807,7 @@ public class EgovSecBBSManageController {
 						"", "");
 				atchFileId = fileMngService.insertFileInfs(result);
 			}
-
+			
 			board.setAtchFileId(atchFileId);
 			board.setReplyAt("Y");
 			board.setFrstRegisterId("SEC");
@@ -816,8 +818,10 @@ public class EgovSecBBSManageController {
 					.getReplyLc()) + 1));
 
 			// 익명게시판 관련
-			board.setNtcrNm(board.getNtcrNm());
-			board.setPassword(EgovFileScrty.encryptPassword(board.getPassword()));
+			board.setNtcrNm(user.getName());
+			String dbpassword = bbsMngService.getPasswordInf(boardVO);
+			board.setPassword(dbpassword);
+			//board.setPassword(EgovFileScrty.encryptPassword(board.getPassword()));
 
 			board.setNttCn(unscript(board.getNttCn())); // XSS 방지
 

@@ -312,9 +312,15 @@
 		</c:otherwise>
 	</c:choose>
 	
-	<c:if test="${boardVO.passwordConfirmAt == 'N,'}">
+	<%-- <c:if test="${boardVO.passwordConfirmAt == 'N,'}">
 		<script type="text/javascript">
 			fn_egov_passwordConfirm();
+		</script>
+	</c:if> --%>
+	
+	<c:if test="${not empty msg}">
+		<script type="text/javascript">
+		alert('${msg}');
 		</script>
 	</c:if>
 </body>

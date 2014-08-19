@@ -161,7 +161,7 @@
 									</div>
 									<div class="form-group has-feedback">
 										<label>비밀번호 <span class="required">*</span></label>
-										<input type="password" name="password" value="" class="form-control" placeholder="작성자"/>
+										<input type="password" name="password" value="" class="form-control" placeholder="비밀번호"/>
 										<small class="help-block"><form:errors path="password" /></small>
 									</div>
 								</c:if>
