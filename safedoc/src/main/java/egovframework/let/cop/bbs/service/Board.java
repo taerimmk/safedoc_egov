@@ -117,6 +117,10 @@ public class Board implements Serializable {
 	 */
 	private String ntceBgndeView = "";
 	
+	
+	/** 작성비밀번호 확인여부 */
+    private String passwordConfirmAt;
+    
 	/**
 	 * atchFileId attribute를 리턴한다.
 	 * @return the atchFileId
@@ -485,10 +489,20 @@ public class Board implements Serializable {
 		this.ntceBgndeView = ntceBgndeView;
 	}
 
+	public String getPasswordConfirmAt() {
+		return passwordConfirmAt;
+	}
+
+	public void setPasswordConfirmAt(String passwordConfirmAt) {
+		this.passwordConfirmAt = passwordConfirmAt;
+	}
+	
 	/**
 	 * toString 메소드를 대치한다.
 	 */
 	public String toString(){
 		return ToStringBuilder.reflectionToString(this);
 	}
+
+	
 }

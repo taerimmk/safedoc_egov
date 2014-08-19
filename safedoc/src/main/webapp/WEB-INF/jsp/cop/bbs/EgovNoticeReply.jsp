@@ -78,7 +78,6 @@
   .noStyle td{background:ButtonFace; padding-left:0px;padding-right:0px}
 </style>
 <title><c:out value='${bdMstr.bbsNm}'/> - 답글쓰기</title>
-
 <style type="text/css">
     h1 {font-size:12px;}
     caption {visibility:hidden; font-size:0; height:0; margin:0; padding:0; line-height:0;}
@@ -137,6 +136,11 @@
             <c:if test="${anonymous != 'true'}">
             <input type="hidden" name="ntcrNm" value="dummy">   <!-- validator 처리를 위해 지정 -->
             <input type="hidden" name="password" value="dummy"> <!-- validator 처리를 위해 지정 -->
+            </c:if>
+            
+            <c:if test="${anonymous == 'true'}">
+            <input type="text" name="ntcrNm" value="" />   <!-- validator 처리를 위해 지정 -->
+            <input type="password" name="password" value="" /> <!-- validator 처리를 위해 지정 -->
             </c:if>
 
             <c:if test="${bdMstr.bbsAttrbCode != 'BBSA01'}">

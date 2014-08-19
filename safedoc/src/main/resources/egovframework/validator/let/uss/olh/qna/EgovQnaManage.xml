@@ -26,7 +26,7 @@
 				</var>
 			</field> 
 
-			<field property="areaNo" depends="maxlength">
+			<!-- <field property="areaNo" depends="maxlength">
         		<arg0 key="qnaManageVO.areaNo" resource="true"/>
         		<arg1 key="4" resource="true"/>
 				<var>
@@ -51,7 +51,7 @@
 				<var-name>maxlength</var-name>
 				<var-value>4</var-value>
 				</var>
-			</field>			
+			</field>	 -->		
 
 			<field property="qestnSj" depends="required, maxlength">
         		<arg0 key="qnaManageVO.qestnSj" resource="true"/>
