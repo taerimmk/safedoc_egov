@@ -118,12 +118,7 @@
 							<input type="hidden" name="authFlag"
 								value="<c:out value='${bdMstr.authFlag}'/>" />
 
-							<c:if test="${sec == 'true'}">
-								<input type="hidden" name="ntcrNm" value="dummy">
-								<!-- validator 처리를 위해 지정 -->
-								<input type="hidden" name="password" value="dummy">
-								<!-- validator 처리를 위해 지정 -->
-							</c:if>
+
 
 							<c:if test="${bdMstr.bbsAttrbCode != 'BBSA01'}">
 								<input name="ntceBgnde" type="hidden" value="10000101">
@@ -158,6 +153,18 @@
 											value="N" />
 									</div>
 								</li> --%>
+								<c:if test="${sec == 'true'}">
+									<div class="form-group has-feedback">
+										<label>작성자 <span class="required">*</span></label>
+										<input type="text" name="ntcrNm" value="" class="form-control" placeholder="작성자"/>
+										<small class="help-block"><form:errors path="ntcrNm" /></small>
+									</div>
+									<div class="form-group has-feedback">
+										<label>비밀번호 <span class="required">*</span></label>
+										<input type="password" name="password" value="" class="form-control" placeholder="작성자"/>
+										<small class="help-block"><form:errors path="password" /></small>
+									</div>
+								</c:if>
 								<li>
 									<div class="form-group has-feedback">
 										<label>질문내용 <span class="required">*</span></label>
@@ -168,8 +175,8 @@
 								</li>
 							</ul>
 						</form:form>
-						
-						
+
+
 						<div class="buttons" align="center" style="margin-bottom: 100px">
 							<c:if test="${bdMstr.authFlag == 'Y'}">
 								<a href="#LINK" class="btn btn-success"
@@ -195,6 +202,6 @@
 
 	<c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" />
 	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />
-	
+
 </body>
 </html>

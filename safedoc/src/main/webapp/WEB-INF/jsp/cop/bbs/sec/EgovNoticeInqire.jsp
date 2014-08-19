@@ -154,7 +154,7 @@
 						<div class="portfolio-tags bottom-padding col-sm-9 col-md-9">
 							<p>
 								<b>작성자명:&nbsp;&nbsp;</b><span><c:out
-										value="${result.frstRegisterNm}" /></span>
+										value="${result.ntcrNm}" /></span>
 							</p>
 							<p>
 								<b>작성시간:&nbsp;&nbsp;</b><span><c:out

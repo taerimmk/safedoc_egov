@@ -28,54 +28,7 @@
 	<c:set var="prefix" value="/sec" />
 </c:if>
 <script type="text/javascript" src="<c:url value='/js/EgovBBSMng.js' />"></script>
-<c:choose>
-	<c:when test="${preview == 'true'}">
-		<script type="text/javascript">
-		<!--
-			function press(event) {
-			}
 
-			function fn_egov_addNotice() {
-			}
-
-			function fn_egov_select_noticeList(pageNo) {
-			}
-
-			function fn_egov_inqire_notice(nttId, bbsId) {
-			}
-		//-->
-		</script>
-	</c:when>
-	<c:otherwise>
-		<script type="text/javascript">
-		<!--
-			function press(event) {
-				if (event.keyCode == 13) {
-					fn_egov_select_noticeList('1');
-				}
-			}
-
-			function fn_egov_addNotice() {
-				document.frm.action = "<c:url value='/cop/bbs${prefix}/addBoardArticle.do'/>";
-				document.frm.submit();
-			}
-
-			function fn_egov_select_noticeList(pageNo) {
-				document.frm.pageIndex.value = pageNo;
-				document.frm.action = "<c:url value='/cop/bbs${prefix}/selectBoardList.do'/>";
-				document.frm.submit();
-			}
-
-			function fn_egov_inqire_notice(nttId, bbsId) {
-				//document.subForm.nttId.value = nttId;
-				//document.subForm.bbsId.value = bbsId;
-				//document.subForm.action = "<c:url value='/cop/bbs${prefix}/selectBoardArticle.do'/>";
-				//document.subForm.submit();
-			}
-		//-->
-		</script>
-	</c:otherwise>
-</c:choose>
 </head>
 <body>
 	<div class="page-box">
@@ -108,7 +61,7 @@
 							
 						</div> -->
 						<div class="bs-example">
-							<form name="frm"
+							<form name="frm" class="detailFrm"
 								action="<c:url value='/cop/bbs${prefix}/selectBoardList.do'/>"
 								method="post">
 								<input type="hidden" name="bbsId"
@@ -156,19 +109,6 @@
 							</form>
 						</div>
 						<table class="table table-bordered table-hover">
-							<%-- <colgroup>
-								<col width="5%">
-								<col>
-								<c:if test="${brdMstrVO.bbsAttrbCode == 'BBSA01'}">
-									<col width="15%">
-									<col width="15%">
-								</c:if>
-								<c:if test="${sec != 'true'}">
-									<col width="10%">
-								</c:if>
-								<col width="15%">
-								<col width="5%">
-							</colgroup> --%>
 							<thead>
 								<tr>
 									<th>번호</th>
@@ -215,6 +155,9 @@
 										<td align="left" class="lt_text3">
 											<form name="subForm" method="post"
 												action="<c:url value='/cop/bbs${prefix}/selectBoardArticle.do'/>">
+
+												<input name="password" type="hidden" value="" /> <input
+													name="passwordConfirmAt" type="hidden" value="" />
 												<c:if test="${result.replyLc!=0}">
 													<c:forEach begin="0" end="${result.replyLc}" step="1">
 			                    &nbsp;
@@ -240,9 +183,13 @@
 															value="<c:out value='${brdMstrVO.authFlag}'/>" />
 														<input name="pageIndex" type="hidden"
 															value="<c:out value='${searchVO.pageIndex}'/>" />
-														<span class="link"><input type="submit"
+														<span class="link"> <%-- <input type="submit"
 															style="width: 320px; border: solid 0px black; text-align: left;"
-															value="<c:out value="${result.nttSj}"/>"></span>
+															value="<c:out value="${result.nttSj}"/>"> --%> <a
+															href="#LINK" class="detailSubmit"
+															style="width: 320px; border: solid 0px black; text-align: left;"><c:out
+																	value="${result.nttSj}" /></a>
+														</span>
 													</c:otherwise>
 												</c:choose>
 											</form>
@@ -270,7 +217,6 @@
 						</div>
 						<!-- .pagination-box -->
 
-
 					</div>
 				</div>
 				</article>
@@ -287,6 +233,89 @@
 
 	<c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" />
 	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />
+	<c:choose>
+		<c:when test="${preview == 'true'}">
+			<script type="text/javascript">
+				function press(event) {
+				}
 
+				function fn_egov_addNotice() {
+				}
+
+				function fn_egov_select_noticeList(pageNo) {
+				}
+
+				function fn_egov_inqire_notice(nttId, bbsId) {
+				}
+			</script>
+		</c:when>
+		<c:otherwise>
+			<script type="text/javascript">
+				function press(event) {
+					if (event.keyCode == 13) {
+						fn_egov_select_noticeList('1');
+					}
+				}
+
+				function fn_egov_addNotice() {
+					document.frm.action = "<c:url value='/cop/bbs${prefix}/addBoardArticle.do'/>";
+					document.frm.submit();
+				}
+
+				function fn_egov_select_noticeList(pageNo) {
+					document.frm.pageIndex.value = pageNo;
+					document.frm.action = "<c:url value='/cop/bbs${prefix}/selectBoardList.do'/>";
+					document.frm.submit();
+				}
+
+				function fn_egov_inqire_notice(nttId, bbsId) {
+					//document.subForm.nttId.value = nttId;
+					//document.subForm.bbsId.value = bbsId;
+					//document.subForm.action = "<c:url value='/cop/bbs${prefix}/selectBoardArticle.do'/>";
+					//document.subForm.submit();
+				}
+
+				$(function() {
+					$(".detailSubmit")
+							.on(
+									"click",
+									function() {
+										var subFrm = $(this).parents("form");
+
+										var url = "<c:url value='/cop/bbs/sec/noticePasswordConfirmView.do'/>";
+										var status = "dialogWidth=350px;dialogHeight=200px;resizable=no;center=yes";
+
+										// 작성비밀번호 확인 화면을 호출한다.
+										var returnValue = window
+												.showModalDialog(url, self,
+														status);
+										
+										// 결과값을 받아. 결과를 Submit한다.
+										
+										if (Boolean(returnValue)) {
+											$(subFrm).find("input[name='password']").val(returnValue);
+											subFrm.submit();
+										}
+
+										return false;
+									});
+				});
+				/*********************************************************
+				 * 작성비밀번호.체크..
+				 ******************************************************** */
+				function fn_egov_passwordConfirm() {
+
+					alert("작성 비밀번호를 확인 바랍니다!");
+
+				}
+			</script>
+		</c:otherwise>
+	</c:choose>
+	
+	<c:if test="${boardVO.passwordConfirmAt == 'N,'}">
+		<script type="text/javascript">
+			fn_egov_passwordConfirm();
+		</script>
+	</c:if>
 </body>
 </html>
