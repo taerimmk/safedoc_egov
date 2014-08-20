@@ -9,14 +9,14 @@
         <Logger name="java.sql" level="DEBUG" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
-        <Logger name="egovframework" level="DEBUG" additivity="false">
+        <Logger name="egovframework" level="INFO" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
 		  <!-- log SQL with timing information, post execution -->
 	    <logger name="jdbc.sqltiming" level="INFO" additivity="false">
 	        <appender-ref ref="console" />
 	    </logger>
-	    <logger name="org.springframework" level="DEBUG" additivity="false">
+	    <logger name="org.springframework" level="INFO" additivity="false">
 	        <appender-ref ref="console" />
 	    </logger>
         <!-- <Root level="ERROR"> -->

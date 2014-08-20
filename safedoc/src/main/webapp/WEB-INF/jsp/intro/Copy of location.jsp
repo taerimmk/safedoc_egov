@@ -94,8 +94,8 @@
 			<div class="breadcrumb-box">
 				<div class="container">
 					<ul class="breadcrumb">
-						<li><a href="/">회사소개</a></li>
-						<li class="active">오시는길</li>
+						<li><a href="index.html">회사소개</a></li>
+						<li class="active">인사말</li>
 					</ul>
 				</div>
 			</div>
@@ -103,88 +103,57 @@
 
 			<section id="main"> <header class="page-header">
 			<div class="container">
-				<h1 class="title">오시는 길</h1>
+				<h1 class="title">오시는길</h1>
 			</div>
 			</header>
 			<div class="container">
 				<div class="row">
-					<div class="content col-sm-12 col-md-12">
-						<div class="row">
-							<div class="col-sm-6 col-md-6 contact-info bottom-padding">
-								<address>
-									<div class="title">소재지</div>
-									137-802 서울시 서초구 반포동 49-11(서초중앙로 31길 14-13) 희정빌딩
-								</address>
-								<div class="row">
-									<address class="col-sm-6 col-md-6">
-										<div class="title">Phones</div>
-										<div>Support: +777 (100) 1234</div>
-										<div>Sales manager: +777 (100) 4321</div>
-										<div>Director: +777 (100) 1243</div>
-									</address>
-									<address class="col-sm-6 col-md-6">
-										<div class="title">Email Addresses</div>
-										<div>
-											Support: <a href="mailto:support@example.com">support@example.com</a>
-										</div>
-										<div>
-											Sales manager: <a href="mailto:manager@example.com">manager@example.com</a>
-										</div>
-										<div>
-											Director: <a href="mailto:chief@example.com">chief@example.com</a>
-										</div>
-									</address>
-								</div>
-								<hr>
+					<article class="content col-sm-12 col-md-12">
+					<div id="testMap"
+						style="width: 500px; height: 400px; margin: 20px;"></div>
+					<!-- http://map.naver.com/?dlevel=12&lat=37.5006950&lng=127.0104318&query=7ISc7Jq47Yq567OE7IucIOyEnOy0iOq1rCDshJzstIjspJHslZnroZwzMeq4uCAxNC0xMw%3D%3D&type=ADDRESS&tab=1&enc=b64 -->
+					<script type="text/javascript">
+						var oPoint = new nhn.api.map.LatLng(37.5006950,
+								127.0104318);
+						nhn.api.map.setDefaultPoint('LatLng');
+						oMap = new nhn.api.map.Map('testMap', {
+							point : oPoint,
+							zoom : 10,
+							enableWheelZoom : true,
+							enableDragPan : true,
+							enableDblClickZoom : false,
+							mapMode : 0,
+							activateTrafficMap : false,
+							activateBicycleMap : false,
+							minMaxLevel : [ 1, 14 ],
+							size : new nhn.api.map.Size(500, 400)
+						});
+						var mapZoom = new nhn.api.map.ZoomControl(); // - 줌 컨트롤 선언
+						mapZoom.setPosition({
+							left : 20,
+							bottom : 20
+						}); // - 줌 컨트롤 위치 지정
+						oMap.addControl(mapZoom); // - 줌 컨트롤 추가.
 
-							</div>
-							<div class="col-sm-6 col-md-6 bottom-padding">
-								<div id="testMap"
-									style="width: 500px; height: 400px; margin: 20px;"></div>
-								<!-- http://map.naver.com/?dlevel=12&lat=37.5006950&lng=127.0104318&query=7ISc7Jq47Yq567OE7IucIOyEnOy0iOq1rCDshJzstIjspJHslZnroZwzMeq4uCAxNC0xMw%3D%3D&type=ADDRESS&tab=1&enc=b64 -->
-								<script type="text/javascript">
-									var oPoint = new nhn.api.map.LatLng(
-											37.5006950, 127.0104318);
-									nhn.api.map.setDefaultPoint('LatLng');
-									oMap = new nhn.api.map.Map('testMap', {
-										point : oPoint,
-										zoom : 10,
-										enableWheelZoom : true,
-										enableDragPan : true,
-										enableDblClickZoom : false,
-										mapMode : 0,
-										activateTrafficMap : false,
-										activateBicycleMap : false,
-										minMaxLevel : [ 1, 14 ],
-										size : new nhn.api.map.Size(500, 400)
-									});
-									var mapZoom = new nhn.api.map.ZoomControl(); // - 줌 컨트롤 선언
-									mapZoom.setPosition({
-										left : 20,
-										bottom : 20
-									}); // - 줌 컨트롤 위치 지정
-									oMap.addControl(mapZoom); // - 줌 컨트롤 추가.
 
-									var oSize = new nhn.api.map.Size(28, 37);
-									var oOffset = new nhn.api.map.Size(14, 37);
-									var oIcon = new nhn.api.map.Icon(
-											'http://static.naver.com/maps2/icons/pin_spot2.png',
-											oSize, oOffset);
+						var oSize = new nhn.api.map.Size(28, 37);
+						var oOffset = new nhn.api.map.Size(14, 37);
+						var oIcon = new nhn.api.map.Icon(
+								'http://static.naver.com/maps2/icons/pin_spot2.png',
+								oSize, oOffset);
+						   
+						var oMarker1 = new nhn.api.map.Marker(oIcon, { title : '한국구조물진단연구원' }); 
+						oMarker1.setPoint(oPoint); 
+						oMap.addOverlay(oMarker1);  
+						var oLabel1 = new nhn.api.map.MarkerLabel(); 
+						oMap.addOverlay(oLabel1);  
+						oLabel1.setVisible(true, oMarker1); 
+					</script>
 
-									var oMarker1 = new nhn.api.map.Marker(
-											oIcon, {
-												title : '한국구조물진단연구원'
-											});
-									oMarker1.setPoint(oPoint);
-									oMap.addOverlay(oMarker1);
-									var oLabel1 = new nhn.api.map.MarkerLabel();
-									oMap.addOverlay(oLabel1);
-									oLabel1.setVisible(true, oMarker1);
-								</script>
-							</div>
+					<div class="clearfix"></div>
 
-						</div>
-					</div>
+					</article>
+					<!-- .content -->
 				</div>
 			</div>
 			<!-- .container --> </section>
