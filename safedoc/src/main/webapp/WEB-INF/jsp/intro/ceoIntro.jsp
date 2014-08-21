@@ -223,7 +223,7 @@
 
 					</div>
 					</article>
-					<div class="col-sm-12 col-md-6"> 
+					<div class="col-sm-12 col-md-12"> 
 						<div class="title-box">
 							<h2 class="title">주 요 저 서</h2>
 						</div>

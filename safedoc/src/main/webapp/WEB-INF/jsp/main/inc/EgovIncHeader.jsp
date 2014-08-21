@@ -89,23 +89,21 @@
 											</ul></li>
 										<li class="parent"><a href="#">구조물진단이란?</a>
 											<ul class="sub">
-												<li><a href="sidebar-blocks.html">구조물 진단범위</a></li>
-												<li><a href="full-width.html">구조물 진단유형</a></li>
+												<li><a href="<c:url value="/EgovPageLink.do?link=info/info01"/>">구조물 진단범위</a></li>
+												<li><a href="<c:url value="/EgovPageLink.do?link=info/info02"/>">구조물 진단유형</a></li>
 											</ul></li>
 										<li class="parent"><a href="#">주요실적</a>
 											<ul class="sub">
 												<li><a
 													href="<c:url value="/uss/olh/qna/QnaListInqire.do"/>">Q&A
 														게시판</a></li>
-											</ul>
-											<!-- .sub --></li>
+											</ul> <!-- .sub --></li>
 										<li class="parent"><a href="#">Q&A</a>
 											<ul class="sub">
 												<li><a
 													href="<c:url value="/uss/olh/qna/QnaListInqire.do"/>">Q&A
 														게시판</a></li>
-											</ul>
-											<!-- .sub --></li>
+											</ul> <!-- .sub --></li>
 										<li class="parent"><a href="#">Contact</a>
 											<ul class="sub">
 
@@ -113,8 +111,7 @@
 												<li><a
 													href="<c:url value="/cop/bbs/sec/selectBoardList.do?bbsId=BBSMSTR_000000000001"/>">견적문의</a></li>
 												<!-- <li><a href="sidebar-blocks.html">방명록</a></li> -->
-											</ul>
-											<!-- .sub --></li>
+											</ul> <!-- .sub --></li>
 										<%
 											LoginVO loginVO = (LoginVO) session.getAttribute("LoginVO");
 											if (loginVO == null) {
