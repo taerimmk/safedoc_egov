@@ -18,7 +18,9 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<c:set var="ImgUrl" value="/images/egovframework/cop/bbs/" />
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<%-- <c:set var="ImgUrl" value="/images/egovframework/cop/bbs/" /> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -216,6 +218,10 @@
 							</ul>
 						</div>
 						<!-- .pagination-box -->
+						<sec:authorize ifAnyGranted="ROLE_ADMIN">
+							<sec:authentication var="principal" property="principal" />
+						</sec:authorize>
+
 
 					</div>
 				</div>
@@ -275,31 +281,6 @@
 					//document.subForm.submit();
 				}
 
-				$(function() {
-					$(".detailSubmit")
-							.on(
-									"click",
-									function() {
-										var subFrm = $(this).parents("form");
-
-										var url = "<c:url value='/cop/bbs/sec/noticePasswordConfirmView.do'/>";
-										var status = "dialogWidth=350px;dialogHeight=200px;resizable=no;center=yes";
-
-										// 작성비밀번호 확인 화면을 호출한다.
-										var returnValue = window
-												.showModalDialog(url, self,
-														status);
-										
-										// 결과값을 받아. 결과를 Submit한다.
-										
-										if (Boolean(returnValue)) {
-											$(subFrm).find("input[name='password']").val(returnValue);
-											subFrm.submit();
-										}
-
-										return false;
-									});
-				});
 				/*********************************************************
 				 * 작성비밀번호.체크..
 				 ******************************************************** */
@@ -311,16 +292,60 @@
 			</script>
 		</c:otherwise>
 	</c:choose>
-	
+	<sec:authorize ifAnyGranted="ROLE_ADMIN">
+		<script type="text/javascript">
+			$(function() {
+				$(".detailSubmit").on("click", function() {
+					var subFrm = $(this).parents("form");
+
+					//$(subFrm).find("input[name='password']").val("admin");
+					subFrm.submit();
+
+					return false;
+				});
+			});
+		</script>
+	</sec:authorize>
+	<sec:authorize ifNotGranted="ROLE_ADMIN">
+		<script type="text/javascript">
+			$(function() {
+				$(".detailSubmit")
+						.on(
+								"click",
+								function() {
+									var subFrm = $(this).parents("form");
+
+									var url = "<c:url value='/cop/bbs/sec/noticePasswordConfirmView.do'/>";
+									var status = "dialogWidth=350px;dialogHeight=200px;resizable=no;center=yes";
+
+									// 작성비밀번호 확인 화면을 호출한다.
+									var returnValue = window.showModalDialog(
+											url, self, status);
+
+									// 결과값을 받아. 결과를 Submit한다.
+
+									if (Boolean(returnValue)) {
+										$(subFrm)
+												.find("input[name='password']")
+												.val(returnValue);
+										subFrm.submit();
+									}
+
+									return false;
+								});
+			});
+		</script>
+	</sec:authorize>
+
 	<%-- <c:if test="${boardVO.passwordConfirmAt == 'N,'}">
 		<script type="text/javascript">
 			fn_egov_passwordConfirm();
 		</script>
 	</c:if> --%>
-	
+
 	<c:if test="${not empty msg}">
 		<script type="text/javascript">
-		alert('${msg}');
+			alert('${msg}');
 		</script>
 	</c:if>
 </body>
