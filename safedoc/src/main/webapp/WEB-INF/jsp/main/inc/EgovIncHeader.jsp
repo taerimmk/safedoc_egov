@@ -92,12 +92,11 @@
 												<li><a href="<c:url value="/EgovPageLink.do?link=info/info01"/>">구조물 진단범위</a></li>
 												<li><a href="<c:url value="/EgovPageLink.do?link=info/info02"/>">구조물 진단유형</a></li>
 											</ul></li>
-										<li class="parent"><a href="#">주요실적</a>
-											<ul class="sub">
+										<li class=""><a href="<c:url value="/EgovPageLink.do?link=careers/careers01"/>">주요실적</a>
+											<%-- <ul class="sub">
 												<li><a
-													href="<c:url value="/uss/olh/qna/QnaListInqire.do"/>">Q&A
-														게시판</a></li>
-											</ul> <!-- .sub --></li>
+													href="<c:url value="/EgovPageLink.do?link=careers/careers01"/>">토질 및 기초</a></li>
+											</ul> --%></li>
 										<li class="parent"><a href="#">Q&A</a>
 											<ul class="sub">
 												<li><a
