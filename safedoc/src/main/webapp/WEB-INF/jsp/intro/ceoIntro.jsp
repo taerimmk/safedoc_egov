@@ -16,8 +16,7 @@
 	<div class="page-box">
 		<div class="page-box-content">
 
-			<header class="header header-two"> <c:import
-				url="/EgovPageLink.do?link=main/inc/EgovIncHeader" /> </header>
+			<c:import url="/EgovPageLink.do?link=main/inc/EgovIncHeader" />
 			<!-- .header -->
 
 			<div class="breadcrumb-box">
@@ -81,8 +80,7 @@
 	</div>
 	<!-- .page-box -->
 
-	<footer id="footer"> <c:import
-		url="/EgovPageLink.do?link=main/inc/EgovIncFooter" /> </footer>
+	<c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" />
 	<div class="clearfix"></div>
 
 	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />

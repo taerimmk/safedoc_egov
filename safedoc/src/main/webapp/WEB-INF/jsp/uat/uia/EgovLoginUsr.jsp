@@ -36,8 +36,7 @@
 				<div class="row">
 					<div class="logo-box col-sm-12 col-md-12">
 						<div class="logo">
-							<a href="<c:url value="/"/>"> <img src="/img/logo.svg"
-								class="logo-img" alt="">
+							<a href="/"> <img src="/img/logo.png" class="logo-img" alt="">
 							</a>
 						</div>
 					</div>

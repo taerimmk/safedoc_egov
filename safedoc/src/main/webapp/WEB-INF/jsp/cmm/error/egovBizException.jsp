@@ -1,66 +1,56 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
-<meta http-equiv="content-language" content="ko">
-<title>eGovFrame 템플릿</title>
-
-<link rel="stylesheet" href="<c:url value='/'/>css/default.css" type="text/css" >
-
-<script type="text/javascript">
-function fncGoAfterErrorPage(){
-    history.back(-2);
-}
-</script>
+<title>에러페이지</title>
+<c:import url="/EgovPageLink.do?link=main/inc/headerResource" />
 </head>
+<body class="fixed-header">
+	<div class="page-box">
+		<div class="page-box-content">
 
-<body>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td align="center" valign="top"><br />
-    <br />
-    <br />
-    <table width="600" border="0" cellpadding="0" cellspacing="0" background="er_images/blue_bg.jpg' />">
-      <tr>
-        <td align="center"><table width="100%" border="0" cellspacing="9" cellpadding="0">
-          <tr>
-            <td bgcolor="#FFFFFF"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td align="left"><img src="<c:url value='/images/egovframework/com/cmm/er_logo.jpg' />" width="379" height="57" /></td>
-              </tr>
-              <tr>
-                <td><br />
-                  <br /></td>
-              </tr>
-              <tr>
-                <td align="center"><table width="520" border="0" cellspacing="2" cellpadding="2">
-                  <tr>
-                    <td width="74" rowspan="2" align="center"><img src="<c:url value='/images/egovframework/com/cmm/danger.jpg' />" width="74" height="74" /></td>
-                    <td width="399" align="left" class="lt_text2">수행중 오류가 발생하였습니다. </td>
-                  </tr>
-                </table>
-                  <table width="500" border="0" cellspacing="2" cellpadding="2">
-                                  </table></td>
-              </tr>
-              <tr>
-                <td><br />
-                  <br /></td>
-              </tr>
-              <tr>
-                <td align="center"><a href="javascript:fncGoAfterErrorPage();"><img src="<c:url value='/images/egovframework/com/cmm/go_history.jpg' />" width="90" height="29" /></a></td>
-              </tr>
-            </table>
-              <br /></td>
-          </tr>
-        </table></td>
-      </tr>
-    </table>
-    </td>
-  </tr>
-</table>
+			<c:import url="/EgovPageLink.do?link=main/inc/EgovIncHeader" />
+			<!-- .header -->
+
+			<div class="breadcrumb-box breadcrumb-none"></div>
+
+			<section id="main">
+			<div class="container">
+				<div class="row">
+					<div class="content col-sm-12 col-md-12">
+						<div class="row">
+							<div class="col-sm-12 col-md-12">
+								<div class="box-404 bg">
+									<h1>500</h1>
+									<h2>수행중 오류가 발생하였습니다.</h2>
+									<br/>
+									<a href="javascript:fncGoAfterErrorPage();">돌아가기</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .container --> </section>
+			<!-- #main -->
+
+		</div>
+		<!-- .page-box-content -->
+	</div>
+	<!-- .page-box -->
+	<c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" />
+	<div class="clearfix"></div>
+	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />
+	<script type="text/javascript">
+		function fncGoAfterErrorPage() {
+			history.back(-2);
+		}
+	</script>
 </body>
 </html>

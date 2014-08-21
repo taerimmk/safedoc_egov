@@ -32,6 +32,7 @@ import egovframework.let.cop.bbs.service.BoardMasterVO;
 import egovframework.let.cop.bbs.service.BoardVO;
 import egovframework.let.cop.bbs.service.EgovBBSAttributeManageService;
 import egovframework.let.cop.bbs.service.EgovBBSManageService;
+import egovframework.let.utl.fcc.service.EgovAuthUtil;
 import egovframework.let.utl.sim.service.EgovFileScrty;
 import egovframework.rte.fdl.property.EgovPropertyService;
 import egovframework.rte.fdl.security.userdetails.util.EgovUserDetailsHelper;
@@ -141,25 +142,10 @@ public class EgovSecBBSManageController {
 	 */
 	@RequestMapping("/cop/bbs/sec/selectBoardList.do")
 	public String selectAnonymousBoardArticles(
-			@RequestParam(value="passwordConfirmAt", required=false) String passwordConfirmAt ,
+			@RequestParam(value = "passwordConfirmAt", required = false) String passwordConfirmAt,
 			@ModelAttribute("searchVO") BoardVO boardVO, ModelMap model)
 			throws Exception {
 		// LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
-
-		// Logger.getLogger(this.getClass()).debug(this.getClass().getName() +
-		// " user.getId() "+ user.getId());
-		// Logger.getLogger(this.getClass()).debug(this.getClass().getName() +
-		// " user.getName() "+ user.getName());
-		// Logger.getLogger(this.getClass()).debug(this.getClass().getName() +
-		// " user.getUniqId() "+ user.getUniqId());
-		// Logger.getLogger(this.getClass()).debug(this.getClass().getName() +
-		// " user.getOrgnztId() "+ user.getOrgnztId());
-		// Logger.getLogger(this.getClass()).debug(this.getClass().getName() +
-		// " user.getUserSe() "+ user.getUserSe());
-		// Logger.getLogger(this.getClass()).debug(this.getClass().getName() +
-		// " user.getEmail() "+ user.getEmail());
-
-		// String attrbFlag = "";
 
 		boardVO.setBbsId(boardVO.getBbsId());
 		boardVO.setBbsNm(boardVO.getBbsNm());
@@ -293,8 +279,7 @@ public class EgovSecBBSManageController {
 		Boolean isAuthenticated = true;
 
 		beanValidator.validate(board, bindingResult);
-		logger.debug("==================]bindingResult[============ {}",
-				bindingResult.toString());
+
 		if (bindingResult.hasErrors()) {
 
 			BoardMasterVO master = new BoardMasterVO();
@@ -371,17 +356,22 @@ public class EgovSecBBSManageController {
 			@ModelAttribute("searchVO") BoardVO boardVO, ModelMap model)
 			throws Exception {
 		// LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
-		
-		
-		
-		String dbpassword = bbsMngService.getPasswordInf(boardVO);
-		String enpassword = EgovFileScrty.encryptPassword(boardVO.getPassword());
+		String[] setRole = { "ROLE_ADMIN" };
+		boolean hasRole = EgovAuthUtil.hasRole(setRole);
 
-		if (!dbpassword.equals(enpassword)) {
+		if (!hasRole) {
+			String dbpassword = bbsMngService.getPasswordInf(boardVO);
+			String enpassword = EgovFileScrty.encryptPassword(boardVO
+					.getPassword());
 
-		    model.addAttribute("msg", egovMessageSource.getMessage("cop.password.not.same.msg"));
-		    String	passwordConfirmAt = "N";
-		    return "forward:/cop/bbs/sec/selectBoardList.do?passwordConfirmAt=" + passwordConfirmAt;
+			if (!dbpassword.equals(enpassword)) {
+
+				model.addAttribute("msg", egovMessageSource
+						.getMessage("cop.password.not.same.msg"));
+				String passwordConfirmAt = "N";
+				return "forward:/cop/bbs/sec/selectBoardList.do?passwordConfirmAt="
+						+ passwordConfirmAt;
+			}
 		}
 		// 조회수 증가 여부 지정
 		boardVO.setPlusCount(true);
@@ -396,10 +386,7 @@ public class EgovSecBBSManageController {
 
 		boardVO.setLastUpdusrId("SEC");
 		BoardVO vo = bbsMngService.selectBoardArticle(boardVO);
-		
-		
 
-		
 		model.addAttribute("result", vo);
 		model.addAttribute("sessionUniqId", "SEC");
 
@@ -494,15 +481,21 @@ public class EgovSecBBSManageController {
 		// -------------------------------
 		// 패스워드 비교
 		// -------------------------------
-		String dbpassword = bbsMngService.getPasswordInf(board);
-		String enpassword = EgovFileScrty.encryptPassword(board.getPassword());
+		String[] setRole = { "ROLE_ADMIN" };
+		boolean hasRole = EgovAuthUtil.hasRole(setRole);
 
-		if (!dbpassword.equals(enpassword)) {
+		if (!hasRole) {
+			String dbpassword = bbsMngService.getPasswordInf(board);
+			String enpassword = EgovFileScrty.encryptPassword(board
+					.getPassword());
 
-			model.addAttribute("msg",
-					egovMessageSource.getMessage("cop.password.not.same.msg"));
+			if (!dbpassword.equals(enpassword)) {
 
-			return "forward:/cop/bbs/sec/selectBoardArticle.do";
+				model.addAttribute("msg", egovMessageSource
+						.getMessage("cop.password.not.same.msg"));
+
+				return "forward:/cop/bbs/sec/selectBoardArticle.do";
+			}
 		}
 		// //-----------------------------
 
@@ -563,16 +556,21 @@ public class EgovSecBBSManageController {
 			// -------------------------------
 			// 패스워드 비교
 			// -------------------------------
-			String dbpassword = bbsMngService.getPasswordInf(boardVO);
-			String enpassword = EgovFileScrty.encryptPassword(boardVO
-					.getPassword());
+			String[] setRole = { "ROLE_ADMIN" };
+			boolean hasRole = EgovAuthUtil.hasRole(setRole);
 
-			if (!dbpassword.equals(enpassword)) {
+			if (!hasRole) {
+				String dbpassword = bbsMngService.getPasswordInf(boardVO);
+				String enpassword = EgovFileScrty.encryptPassword(boardVO
+						.getPassword());
 
-				model.addAttribute("msg", egovMessageSource
-						.getMessage("cop.password.not.same.msg"));
+				if (!dbpassword.equals(enpassword)) {
 
-				return "forward:/cop/bbs/sec/selectBoardArticle.do";
+					model.addAttribute("msg", egovMessageSource
+							.getMessage("cop.password.not.same.msg"));
+
+					return "forward:/cop/bbs/sec/selectBoardArticle.do";
+				}
 			}
 			// //-----------------------------
 
@@ -610,7 +608,7 @@ public class EgovSecBBSManageController {
 	@RequestMapping("/cop/bbs/sec/updateBoardArticle.do")
 	public String updateAnonymousBoardArticle(
 			final MultipartHttpServletRequest multiRequest,
-			
+
 			@ModelAttribute("searchVO") BoardVO boardVO,
 			@ModelAttribute("bdMstr") BoardMaster bdMstr,
 			@ModelAttribute("board") Board board, BindingResult bindingResult,
@@ -676,14 +674,14 @@ public class EgovSecBBSManageController {
 
 			// 익명게시판 관련
 			board.setNtcrNm(board.getNtcrNm());
-			//board.setPassword(EgovFileScrty.encryptPassword(board.getPassword()));
+			// board.setPassword(EgovFileScrty.encryptPassword(board.getPassword()));
 			String dbpassword = bbsMngService.getPasswordInf(boardVO);
 			board.setPassword(dbpassword);
 			board.setNttCn(unscript(board.getNttCn())); // XSS 방지
 
 			bbsMngService.updateBoardArticle(board);
 		}
-		
+
 		return "forward:/cop/bbs/sec/selectBoardList.do";
 	}
 
@@ -696,7 +694,7 @@ public class EgovSecBBSManageController {
 	 * @return
 	 * @throws Exception
 	 */
-	@Secured({"ROLE_ADMIN"})
+	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping("/cop/bbs/sec/addReplyBoardArticle.do")
 	public String addAnonymousReplyBoardArticle(
 			@ModelAttribute("searchVO") BoardVO boardVO, ModelMap model)
@@ -748,7 +746,7 @@ public class EgovSecBBSManageController {
 	 * @return
 	 * @throws Exception
 	 */
-	@Secured({"ROLE_ADMIN"})
+	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping("/cop/bbs/sec/replyBoardArticle.do")
 	public String replyAnonymousBoardArticle(
 			final MultipartHttpServletRequest multiRequest,
@@ -757,9 +755,9 @@ public class EgovSecBBSManageController {
 			@ModelAttribute("board") Board board, BindingResult bindingResult,
 			ModelMap model, SessionStatus status) throws Exception {
 
-		LoginVO user = (LoginVO)EgovUserDetailsHelper.getAuthenticatedUser();
+		LoginVO user = (LoginVO) EgovUserDetailsHelper.getAuthenticatedUser();
 		Boolean isAuthenticated = EgovUserDetailsHelper.isAuthenticated();
-		//Boolean isAuthenticated = true;
+		// Boolean isAuthenticated = true;
 
 		beanValidator.validate(board, bindingResult);
 		if (bindingResult.hasErrors()) {
@@ -807,7 +805,7 @@ public class EgovSecBBSManageController {
 						"", "");
 				atchFileId = fileMngService.insertFileInfs(result);
 			}
-			
+
 			board.setAtchFileId(atchFileId);
 			board.setReplyAt("Y");
 			board.setFrstRegisterId("SEC");
@@ -821,7 +819,7 @@ public class EgovSecBBSManageController {
 			board.setNtcrNm(user.getName());
 			String dbpassword = bbsMngService.getPasswordInf(boardVO);
 			board.setPassword(dbpassword);
-			//board.setPassword(EgovFileScrty.encryptPassword(board.getPassword()));
+			// board.setPassword(EgovFileScrty.encryptPassword(board.getPassword()));
 
 			board.setNttCn(unscript(board.getNttCn())); // XSS 방지
 
@@ -850,5 +848,4 @@ public class EgovSecBBSManageController {
 		return "/cop/bbs/sec/EgovNoticePasswordConfirm";
 	}
 
-	
 }

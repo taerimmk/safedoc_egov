@@ -16,6 +16,8 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -77,14 +79,20 @@
 							<b>질의응답처리상태:&nbsp;&nbsp;</b><span><c:out
 									value="${result.qnaProcessSttusCodeNm}" /></span>
 						</p>
-						<a href="#" class="btn btn-warning"
-							onclick="fn_egov_updt_qnacn('<c:out value="${result.qaId}"/>'); return false;">수정</a>
+						<sec:authorize ifNotGranted="ROLE_ADMIN">
+							<a href="#" class="btn btn-warning"
+								onclick="fn_egov_updt_qnacn('<c:out value="${result.qaId}"/>'); return false;">수정</a>
+						</sec:authorize>
+						<sec:authorize ifAnyGranted="ROLE_ADMIN">
+							<a href="#" class="btn btn-warning"
+								onclick="fn_egov_updt_qnacn_admin('<c:out value="${result.qaId}"/>'); return false;">수정/답변</a>
+						</sec:authorize>
+
 						<a
 							href="<c:url value='/uss/olh/qna/QnaCnDelete.do'/>?qaId=<c:out value='${result.qaId}'/>"
 							class="btn btn-danger"
 							onclick="fn_egov_delete_qnacn('<c:out value="${result.qaId}"/>'); return false;">삭제</a>
-						<a
-							href="<c:url value='/uss/olh/qna/QnaListInqire.do'/>"
+						<a href="<c:url value='/uss/olh/qna/QnaListInqire.do'/>"
 							class="btn btn-info"
 							onclick="fn_egov_inqire_qnalist(); return false;">목록</a>
 					</div>
@@ -143,7 +151,7 @@
 			name="writngPassword" type="hidden" value="" /> <input
 			name="passwordConfirmAt" type="hidden" value="" />
 	</form>
-	
+
 	<c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" />
 	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />
 	<script type="text/javaScript" language="javascript">
@@ -219,6 +227,16 @@
 			fn_egov_passwordConfirm();
 		</script>
 	</c:if>
-	
+	<sec:authorize ifAnyGranted="ROLE_ADMIN">
+		<script type="text/javascript">
+			function fn_egov_updt_qnacn_admin(qaId) {
+				// Update하기 위한 키값을 셋팅
+				document.QnaManageForm.qaId.value = qaId;
+				document.QnaManageForm.action = "<c:url value='/uss/olh/qna/QnaPasswordConfirm.do'/>";
+				document.QnaManageForm.submit();
+			}
+		</script>
+	</sec:authorize>
+
 </body>
 </html>

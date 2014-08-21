@@ -18,6 +18,8 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,38 +42,54 @@
 		document.frm.action = "<c:url value='/cop/bbs${prefix}/selectBoardList.do'/>";
 		document.frm.submit();
 	}
+</script>
+<sec:authorize ifNotGranted="ROLE_ADMIN">
+	<script type="text/javascript">
+		function fn_egov_delete_notice() {
+			if ("<c:out value='${sec}'/>" == "true"
+					&& document.frm.password.value == '') {
+				alert('등록시 사용한 패스워드를 입력해 주세요.');
+				document.frm.password.focus();
+				return;
+			}
 
-	function fn_egov_delete_notice() {
-		if ("<c:out value='${sec}'/>" == "true"
-				&& document.frm.password.value == '') {
-			alert('등록시 사용한 패스워드를 입력해 주세요.');
-			document.frm.password.focus();
-			return;
+			if (confirm('<spring:message code="common.delete.msg" />')) {
+				document.frm.action = "<c:url value='/cop/bbs${prefix}/deleteBoardArticle.do'/>";
+				document.frm.submit();
+			}
 		}
 
-		if (confirm('<spring:message code="common.delete.msg" />')) {
-			document.frm.action = "<c:url value='/cop/bbs${prefix}/deleteBoardArticle.do'/>";
+		function fn_egov_moveUpdt_notice() {
+			if ("<c:out value='${sec}'/>" == "true"
+					&& document.frm.password.value == '') {
+				alert('등록시 사용한 패스워드를 입력해 주세요.');
+				document.frm.password.focus();
+				return;
+			}
+
+			document.frm.action = "<c:url value='/cop/bbs${prefix}/forUpdateBoardArticle.do'/>";
 			document.frm.submit();
 		}
-	}
-
-	function fn_egov_moveUpdt_notice() {
-		if ("<c:out value='${sec}'/>" == "true"
-				&& document.frm.password.value == '') {
-			alert('등록시 사용한 패스워드를 입력해 주세요.');
-			document.frm.password.focus();
-			return;
+	</script>
+</sec:authorize>
+<sec:authorize ifAnyGranted="ROLE_ADMIN">
+	<script type="text/javascript">
+		function fn_egov_delete_notice() {
+			if (confirm('<spring:message code="common.delete.msg" />')) {
+				document.frm.action = "<c:url value='/cop/bbs${prefix}/deleteBoardArticle.do'/>";
+				document.frm.submit();
+			}
 		}
-
-		document.frm.action = "<c:url value='/cop/bbs${prefix}/forUpdateBoardArticle.do'/>";
-		document.frm.submit();
-	}
-
-	function fn_egov_addReply() {
-		document.frm.action = "<c:url value='/cop/bbs${prefix}/addReplyBoardArticle.do'/>";
-		document.frm.submit();
-	}
-</script>
+		function fn_egov_moveUpdt_notice() {
+			document.frm.action = "<c:url value='/cop/bbs${prefix}/forUpdateBoardArticle.do'/>";
+			document.frm.submit();
+		}
+		function fn_egov_addReply() {
+			document.frm.action = "<c:url value='/cop/bbs${prefix}/addReplyBoardArticle.do'/>";
+			document.frm.submit();
+		}
+	</script>
+</sec:authorize>
 <!-- 2009.06.29 : 2단계 기능 추가  -->
 <c:if test="${useComment == 'true'}">
 	<c:import url="/cop/bbs/selectCommentList.do" charEncoding="utf-8">
@@ -164,12 +182,11 @@
 								<b>조회수:&nbsp;&nbsp;</b><span><c:out
 										value="${result.inqireCo}" /></span>
 							</p>
-							
+
 							<p>
-								<b>비밀번호 확인:&nbsp;&nbsp;</b><span>
-								<input
-										type="password" name="password" value="" class="form-control-a"
-										placeholder="비밀번호" /></span>
+								<b>비밀번호 확인:&nbsp;&nbsp;</b><span> <input type="password"
+									name="password" value="" class="form-control-a"
+									placeholder="비밀번호" /></span>
 							</p>
 							<!-- <div class="col-sm-9 col-md-9">
 								<div class="form-group has-feedback ">
@@ -185,8 +202,10 @@
 									onclick="javascript:fn_egov_delete_notice(); return false;">삭제</a>
 							</c:if>
 							<c:if test="${result.replyPosblAt == 'Y'}">
-								<a href="#LINK" class="btn btn-info"
-									onclick="javascript:fn_egov_addReply(); return false;">답글작성</a>
+								<sec:authorize ifAnyGranted="ROLE_ADMIN">
+									<a href="#LINK" class="btn btn-info"
+										onclick="javascript:fn_egov_addReply(); return false;">답글작성</a>
+								</sec:authorize>
 							</c:if>
 							<a href="#LINK" class="btn btn-info"
 								onclick="javascript:fn_egov_select_noticeList('1'); return false;">목록</a>

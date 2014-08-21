@@ -16,15 +16,14 @@
 	<div class="page-box">
 		<div class="page-box-content">
 
-			<header class="header header-two"> <c:import
-				url="/EgovPageLink.do?link=main/inc/EgovIncHeader" /> </header>
+			<c:import url="/EgovPageLink.do?link=main/inc/EgovIncHeader" />
 			<!-- .header -->
 
 			<div class="breadcrumb-box">
 				<div class="container">
 					<ul class="breadcrumb">
 						<li><a href="index.html">회사소개</a></li>
-						<li class="active">회사소개</li>
+						<li class="active">조직도</li>
 					</ul>
 				</div>
 			</div>
@@ -32,7 +31,7 @@
 
 			<section id="main"> <header class="page-header">
 			<div class="container">
-				<h1 class="title">회사소개</h1>
+				<h1 class="title">조직도</h1>
 			</div>
 			</header>
 			<div class="container">
@@ -81,8 +80,7 @@
 	</div>
 	<!-- .page-box -->
 
-	<footer id="footer"> <c:import
-		url="/EgovPageLink.do?link=main/inc/EgovIncFooter" /> </footer>
+	<c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" />
 	<div class="clearfix"></div>
 
 	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />

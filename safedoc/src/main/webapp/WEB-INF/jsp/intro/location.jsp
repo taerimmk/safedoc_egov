@@ -1,4 +1,15 @@
-
+<%--
+  Class Name : EgovMainView.jsp 
+  Description : 메인화면
+  Modification Information
+ 
+      수정일         수정자                   수정내용
+    -------    --------    ---------------------------
+     2011.08.31   JJY       경량환경 버전 생성
+ 
+    author   : 실행환경개발팀 JJY
+    since    : 2011.08.31 
+--%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -9,22 +20,81 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>회사소개</title>
-<c:import url="/EgovPageLink.do?link=main/inc/headerResource" />
+<title>오시는길</title>
+<meta charset="utf-8">
+<meta name="keywords" content="HTML5 Template">
+<meta name="description"
+	content="Progressive — Responsive Multipurpose HTML Template">
+<meta name="author" content="itembridge.com">
+<meta class="viewport" name="viewport"
+	content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="/img/favicon.ico">
+
+<!-- Font -->
+<!-- <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic'> -->
+<link rel='stylesheet' href="/css/nanumgothiccoding.css">
+<!-- Plagins CSS -->
+<link rel="stylesheet" href="/css/buttons/buttons.css">
+<link rel="stylesheet" href="/css/buttons/social-icons.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/jslider.css">
+<link rel="stylesheet" href="/css/settings.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/video-js.min.css">
+<link rel="stylesheet" href="/css/morris.css">
+<link rel="stylesheet" href="/css/royalslider/royalslider.css">
+<link rel="stylesheet"
+	href="/css/royalslider/skins/minimal-white/rs-minimal-white.css">
+<link rel="stylesheet" href="/css/layerslider/layerslider.css">
+<link rel="stylesheet" href="/css/ladda.min.css">
+<link rel="stylesheet" href="/css/datepicker.css">
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="/css/styleMap.css">
+
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="/css/responsive.css">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/customizer/pages.css">
+<link rel="stylesheet" href="/css/customizer/home-pages-customizer.css">
+
+<!-- IE Styles-->
+<link rel='stylesheet' href="/css/ie/ie.css">
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<link rel='stylesheet' href="css/ie/ie8.css">
+  <![endif]-->
+<!-- prevent IE6 flickering -->
+<script type="text/javascript">
+	try {
+		document.execCommand('BackgroundImageCache', false, true);
+	} catch (e) {
+	}
+</script>
+
+<script type="text/javascript"
+	src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=cb8c1bde41a53e90c5d12f48f5686013"></script>
+
 </head>
 <body class="fixed-header">
 	<div class="page-box">
 		<div class="page-box-content">
 
-			<header class="header header-two"> <c:import
-				url="/EgovPageLink.do?link=main/inc/EgovIncHeader" /> </header>
+			<c:import url="/EgovPageLink.do?link=main/inc/EgovIncHeader" />
 			<!-- .header -->
 
 			<div class="breadcrumb-box">
 				<div class="container">
 					<ul class="breadcrumb">
-						<li><a href="index.html">회사소개</a></li>
-						<li class="active">회사소개</li>
+						<li><a href="/">회사소개</a></li>
+						<li class="active">오시는길</li>
 					</ul>
 				</div>
 			</div>
@@ -32,57 +102,99 @@
 
 			<section id="main"> <header class="page-header">
 			<div class="container">
-				<h1 class="title">회사소개</h1>
+				<h1 class="title">오시는 길</h1>
 			</div>
 			</header>
 			<div class="container">
 				<div class="row">
-					<article class="content col-sm-12 col-md-12">
-					<p>우리 연구원은 정부에 등록된 안전진단전문기관이며, 엔지니어링 활동주체로서 토목/건축 구조물에 대한 각종
-						진단과 설계, 구조해석 및 검토업무를 수행하고 있습니다. 이를테면 구조물의 구조설계, 교량․터널, 건축물․ 수리시설,
-						항만․지반구조물의 안전점검 및 진단, 계측관리, 하자처리상담, 갈등관리 민원상담 및 감정평가진단, 건축설계,
-						토목․건축․설비, 토질 및 지반조사, 구조시험, 보수보강공사, 연구개발, 유지관리 등 구조물에 관한 전반적인 엔지니어링
-						업무를 수행하고 있습니다.</p>
-					<p>구조물의 계획, 설계, 시공, 유지관리는 설계 및 시공기법은 물론 공법, 재료, 구조, 시험, 계측, 지반,
-						유지관리 전반에 대한 사항을 포함하는 고도의 종합적이고 공학적인 지식과 경험이 요구되기 때문에 구조물을 계획, 설계,
-						시공, 유지관리하는 기관은 종합엔지니어링의 특성을 갖는 것이 중요하다 할 수 있습니다. 그래서 우리 연구원은 명실 공히
-						구조물과 관련한 엔지니어링 활동주체의 종합기관을 지향하고 있습니다.</p>
-					<p>우리 연구원은 항상 체계적이고 과학적으로 수행하여 대외적인 신뢰와 공신력을 확보하는데 수행목표를 두고 고객
-						여러분의 상담에 임하고 있으며, 구조물과 관련하여 발생하는 민원/다툼/분쟁 등에 대한 고객의 갈등해소에 최선을 다하고
-						있습니다.</p>
-					<p>우리 회사의 사훈은 "정직하고 성실하게 내일을 개척하자"입니다.</p>
-					<div class="clearfix"></div>
-					<dl class="dl-horizontal">
-						<dt>설 립 :</dt>
-						<dd>1997. 1. 10(설립자 : 윤재진)</dd>
+					<div class="content col-sm-12 col-md-12">
+						<div class="row">
+							<div class="col-sm-6 col-md-6 contact-info bottom-padding">
+								<address>
+									<div class="title">소재지</div>
+									137-802 서울시 서초구 반포동 49-11(서초중앙로 31길 14-13) 희정빌딩
+								</address>
+								<div class="row">
+									<address class="col-sm-6 col-md-6">
+										<div class="title">Phones</div>
+										<div>Support: +777 (100) 1234</div>
+										<div>Sales manager: +777 (100) 4321</div>
+										<div>Director: +777 (100) 1243</div>
+									</address>
+									<address class="col-sm-6 col-md-6">
+										<div class="title">Email Addresses</div>
+										<div>
+											Support: <a href="mailto:support@example.com">support@example.com</a>
+										</div>
+										<div>
+											Sales manager: <a href="mailto:manager@example.com">manager@example.com</a>
+										</div>
+										<div>
+											Director: <a href="mailto:chief@example.com">chief@example.com</a>
+										</div>
+									</address>
+								</div>
+								<hr>
 
-						<dt>대표이사 :</dt>
-						<dd>김국진</dd>
+							</div>
+							<div class="col-sm-6 col-md-6 bottom-padding">
+								<div id="testMap"
+									style="width: 500px; height: 400px; margin: 20px;"></div>
+								<!-- http://map.naver.com/?dlevel=12&lat=37.5006950&lng=127.0104318&query=7ISc7Jq47Yq567OE7IucIOyEnOy0iOq1rCDshJzstIjspJHslZnroZwzMeq4uCAxNC0xMw%3D%3D&type=ADDRESS&tab=1&enc=b64 -->
+								<script type="text/javascript">
+									var oPoint = new nhn.api.map.LatLng(
+											37.5006950, 127.0104318);
+									nhn.api.map.setDefaultPoint('LatLng');
+									oMap = new nhn.api.map.Map('testMap', {
+										point : oPoint,
+										zoom : 10,
+										enableWheelZoom : true,
+										enableDragPan : true,
+										enableDblClickZoom : false,
+										mapMode : 0,
+										activateTrafficMap : false,
+										activateBicycleMap : false,
+										minMaxLevel : [ 1, 14 ],
+										size : new nhn.api.map.Size(500, 400)
+									});
+									var mapZoom = new nhn.api.map.ZoomControl(); // - 줌 컨트롤 선언
+									mapZoom.setPosition({
+										left : 20,
+										bottom : 20
+									}); // - 줌 컨트롤 위치 지정
+									oMap.addControl(mapZoom); // - 줌 컨트롤 추가.
 
-						<dt>법인등록번호 :</dt>
-						<dd>110111-1362708 (등기번호 : 136270)</dd>
+									var oSize = new nhn.api.map.Size(28, 37);
+									var oOffset = new nhn.api.map.Size(14, 37);
+									var oIcon = new nhn.api.map.Icon(
+											'http://static.naver.com/maps2/icons/pin_spot2.png',
+											oSize, oOffset);
 
-						<dt>소재지 :</dt>
-						<dd>137-802 서울시 서초구 반포동 49-11(서초중앙로 31길 14-13) 희정빌딩</dd>
-					</dl>
+									var oMarker1 = new nhn.api.map.Marker(
+											oIcon, {
+												title : '한국구조물진단연구원'
+											});
+									oMarker1.setPoint(oPoint);
+									oMap.addOverlay(oMarker1);
+									var oLabel1 = new nhn.api.map.MarkerLabel();
+									oMap.addOverlay(oLabel1);
+									oLabel1.setVisible(true, oMarker1);
+								</script>
+							</div>
+
+						</div>
+					</div>
 				</div>
-				</article>
-
-				<!-- .content -->
 			</div>
+			<!-- .container --> </section>
+			<!-- #main -->
+
 		</div>
-
-		<!-- .container -->
-		</section>
-		<!-- #main -->
-
-	</div>
-	<!-- .page-box-content -->
+		<!-- .page-box-content -->
 	</div>
 	<!-- .page-box -->
 
-	<footer id="footer"> <c:import
-		url="/EgovPageLink.do?link=main/inc/EgovIncFooter" /> </footer>
+	<c:import url="/EgovPageLink.do?link=main/inc/EgovIncFooter" />
 	<div class="clearfix"></div>
 
 	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />
