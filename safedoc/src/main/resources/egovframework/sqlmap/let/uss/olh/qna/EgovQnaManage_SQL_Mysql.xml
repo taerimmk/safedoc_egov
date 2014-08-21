@@ -243,6 +243,16 @@
 				  , ANSWER_DE=DATE_FORMAT(sysdate(),'%Y%m%d')
 				  , LAST_UPDT_PNTTM=sysdate()
 				  , LAST_UPDUSR_ID=#lastUpdusrId#
+				  
+				  , QESTN_SJ=#qestnSj#
+				  , QESTN_CN=#qestnCn#
+				  , WRITNG_PASSWORD=#writngPassword#				  
+				  , AREA_NO=#areaNo#
+				  , MIDDLE_TELNO=#middleTelno#
+				  , END_TELNO=#endTelno#
+				  ,	EMAIL_ADRES=#emailAdres#
+				  , EMAIL_ANSWER_AT=ifnull(#emailAnswerAt#,'N')
+				  
 			WHERE  QA_ID=#qaId#
 		]]>
 	</update>

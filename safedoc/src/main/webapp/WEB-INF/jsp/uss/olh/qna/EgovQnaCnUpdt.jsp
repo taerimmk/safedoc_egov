@@ -17,6 +17,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="validator"
 	uri="http://www.springmodules.org/tags/commons-validator"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -59,7 +61,7 @@
 							method="post">
 							<input name="qaId" type="hidden"
 								value="<c:out value='${result.qaId}'/>">
-							<input name="answerCn" type="hidden" value="Testing..." />
+
 							<ul class="list-unstyled">
 								<li>
 									<div class="form-group has-feedback">
@@ -115,12 +117,27 @@
 												path="qestnCn" /></small>
 									</div>
 								</li>
+								<sec:authorize ifAnyGranted="ROLE_ADMIN">
+									<li>
+										<div class="form-group has-feedback">
+											<label>답변내용 <span class="required">*</span></label>
+											<form:textarea path="answerCn" cols="95" rows="20"
+												cssClass="form-control" />
+											<small class="help-block"><form:errors
+													path="answerCn" /></small> <input type="hidden"
+												name="qnaProcessSttusCode" value="3" />
+										</div>
+									</li>
+								</sec:authorize>
+								<sec:authorize ifNotGranted="ROLE_ADMIN">
+									<input name="answerCn" type="hidden" value="Testing..." />
+								</sec:authorize>
 							</ul>
 						</form:form>
 
 						<a href="#" class="btn btn-success"
-							onclick="fn_egov_updt_qnacn(document.qnaManageVO,'<c:out value="${result.qaId}"/>'); return false;" >저장</a>
-						
+							onclick="fn_egov_updt_qnacn(document.qnaManageVO,'<c:out value="${result.qaId}"/>'); return false;">저장</a>
+
 						<a href="<c:url value='/uss/olh/qna/QnaListInqire.do'/>"
 							class="btn btn-info"
 							onclick="fn_egov_inqire_qnalist(); return false;">목록</a>
@@ -149,25 +166,6 @@
 		}
 
 		/* ********************************************************
-		 * 저장처리화면
-		 ******************************************************** */
-		function fn_egov_updt_qnacn(form, qaId) {
-
-			if (!validateQnaManageVO(form)) {
-
-				return;
-
-			} else {
-
-				form.qaId.value = qaId;
-				form.action = "<c:url value='/uss/olh/qna/QnaCnUpdt.do'/>";
-				form.submit();
-
-			}
-
-		}
-
-		/* ********************************************************
 		 * 목록 으로 가기
 		 ******************************************************** */
 		function fn_egov_inqire_qnalist() {
@@ -177,5 +175,49 @@
 
 		}
 	</script>
+	<sec:authorize ifAnyGranted="ROLE_ADMIN">
+		<script type="text/javascript">
+			/* ********************************************************
+			 * 저장처리화면
+			 ******************************************************** */
+			function fn_egov_updt_qnacn(form, qaId) {
+
+				if (!validateQnaManageVO(form)) {
+
+					return;
+
+				} else {
+
+					form.qaId.value = qaId;
+					form.action = "<c:url value='/uss/olh/qnm/QnaCnAnswerUpdt.do'/>";
+					form.submit();
+
+				}
+
+			}
+		</script>
+	</sec:authorize>
+	<sec:authorize ifNotGranted="ROLE_ADMIN">
+		<script type="text/javascript">
+			/* ********************************************************
+			 * 저장처리화면
+			 ******************************************************** */
+			function fn_egov_updt_qnacn(form, qaId) {
+
+				if (!validateQnaManageVO(form)) {
+
+					return;
+
+				} else {
+
+					form.qaId.value = qaId;
+					form.action = "<c:url value='/uss/olh/qna/QnaCnUpdt.do'/>";
+					form.submit();
+
+				}
+
+			}
+		</script>
+	</sec:authorize>
 </body>
 </html>

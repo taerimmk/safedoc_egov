@@ -128,8 +128,8 @@
 										<li class="parent"><a href="#"><c:out
 													value="${loginName}" /> 님</a>
 											<ul class="sub">
-												<li><a
-													href="<c:url value='/uss/olh/qnm/QnaAnswerListInqire.do'/>">서비스관리</a></li>
+												<%-- <li><a
+													href="<c:url value='/uss/olh/qnm/QnaAnswerListInqire.do'/>">서비스관리</a></li> --%>
 												<li><a href="<c:url value='/uat/uia/actionLogout.do'/>">로그아웃</a></li>
 
 											</ul></li>
