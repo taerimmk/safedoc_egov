@@ -41,7 +41,7 @@
 			<div class="breadcrumb-box">
 				<div class="container">
 					<ul class="breadcrumb">
-						<li>Contact </a>
+						<li>Contact
 						</li>
 						<li><a href="#">견적문의</a></li>
 					</ul>
@@ -63,7 +63,7 @@
 							
 						</div> -->
 						<div class="bs-example">
-							<form name="frm" class="detailFrm"
+							<form name="frm" class="form-inline" role="form"
 								action="<c:url value='/cop/bbs${prefix}/selectBoardList.do'/>"
 								method="post">
 								<input type="hidden" name="bbsId"
@@ -83,7 +83,7 @@
 
 								<!--실명확인을 위한  설정 End......-->
 								<!-- <div class="col-xs-2"> -->
-								<div class="form-group col-xs-2">
+								<div class="form-group">
 									<select class="form-control" name="searchCnd">
 										<option value="0"
 											<c:if test="${searchVO.searchCnd == '0'}">selected="selected"</c:if>>제목</option>
@@ -93,7 +93,7 @@
 											<c:if test="${searchVO.searchCnd == '2'}">selected="selected"</c:if>>작성자</option>
 									</select>
 								</div>
-								<div class="form-group col-xs-4">
+								<div class="form-group">
 									<label class="sr-only" for="exampleInputPassword2">search</label>
 									<input type="text" class="form-control"
 										id="exampleInputPassword2" placeholder="검색어" name="searchWrd"

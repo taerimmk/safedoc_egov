@@ -33,7 +33,7 @@
 			<div class="breadcrumb-box">
 				<div class="container">
 					<ul class="breadcrumb">
-						<li><a href="index.html">Q&amp;A</a></li>
+						<li><a href="#">Q&amp;A</a></li>
 						<li><a href="#">Q&amp;A 게시판</a></li>
 					</ul>
 				</div>
