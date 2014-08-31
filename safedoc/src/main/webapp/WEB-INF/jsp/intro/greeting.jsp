@@ -47,7 +47,7 @@
 			</header>
 			<div class="container">
 				<div class="row">
-					<article class="content col-sm-12 col-md-12">
+					<article class="content col-sm-6 col-md-6">
 					<p>저희 홈페이지를 방문해 주셔서 감사합니다. 우리 연구원은 토목․건축 구조물의 구조설계, 구조물 진단,
 						토질․지반조사, 계측관리, 보수․보강, 구조 및 재료시험, 기술행정 등의 각 분야에서 다년간 쌓은 지식과 경험을 가진
 						우수한 기술진을 확보하고, 체계적이고 과학적으로 공신력있게 업무를 수행하고 있습니다.</p>
@@ -55,6 +55,19 @@
 						유지관리 전반에 대한 사항을 포함하는 고도의 종합적이고 공학적인 지식과 경험이 요구되기 때문에 구조물을 계획, 설계,
 						시공, 유지관리하는 기관은 종합엔지니어링의 특성을 갖는 것이 중요하다 할 수 있습니다. 그래서 우리 연구원은 명실 공히
 						구조물과 관련한 엔지니어링 활동주체의 종합기관을 지향하고 있습니다.</p>
+					</article>
+
+					
+					<div class="col-sm-6 col-md-6">
+						<a class="gallery-images" rel="fancybox"
+							href="img/content/portfolio-2.jpg"> <img
+							src="/img/content/member01.jpg" width="345px" height="254" alt="" />
+						</a>
+					</div>
+					<!-- <img
+						src="/img/content/member01.jpg" class="ls-bg ls-preloaded" alt=""
+						style="padding: 0px; border-width: 0px; width: 345px; height: 254.21052631578948px; margin-left: 0px; margin-top: -0.10526315789473983px;" /> -->
+					<article class="content col-sm-12 col-md-12">
 					<p>이러한 취지에서 우리연구원은 각종 토목건축구조물의 구조설계업무는 물론 건축물, 교량 및 터널, 수리시설 등에
 						대한 안전진단업무를 수행하고 있으며, 토질 및 기초, 건축설계분야의 엔지니어링 활동주체의 등록과 함께, 구조물 관련한
 						기술, 조사, 학술용역을 수행할 기업부설연구소를 두고 있습니다. 또한, 구조물의 개보수 및 보강을 전담할 별도의 시설물
@@ -70,7 +83,7 @@
 						형성되도록 진정 노력할 것입니다.</p>
 					<p>여러분의 아낌없는 협조와 성원을 부탁드리겠습니다. 끝으로 귀사와 여러분의 무궁한 발전을 기원합니다.
 						감사합니다.</p>
-
+					</article>
 
 					<div class="clearfix"></div>
 

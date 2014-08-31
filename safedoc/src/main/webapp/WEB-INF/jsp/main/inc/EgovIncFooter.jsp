@@ -33,14 +33,14 @@
 			</svg>
 					</div>
 					<strong class="title">Call Us:</strong> +1 (02) 595-7115 <br>
-					<strong>or</strong> +1 (777) 123-45-67
+					<strong>or FAX</strong> +1 (02) 595-1579
+
 				</div>
 
 				<div class="address col-xs-6 col-sm-3 col-md-3">
 					<div class="footer-icon">
-						<svg xmlns="http://www.w3.org/2000/svg"
-							xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							width="16px" height="16px" viewBox="0 0 16 16"
+						<svg xmlns="" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+							y="0px" width="16px" height="16px" viewBox="0 0 16 16"
 							enable-background="new 0 0 16 16" xml:space="preserve">
 			  <g>
 				<g>
@@ -55,8 +55,8 @@
 			  </g>
 			</svg>
 					</div>
-					49 Archdale, 2B Charleston 5655, Excel Tower<br> OPG Rpad,
-					4538FH
+					137-802 서울시 서초구 반포동 49-11(서초중앙로 31길 14-13) 희정빌딩
+
 				</div>
 
 				<div class="col-xs-12 col-sm-3 col-md-3">

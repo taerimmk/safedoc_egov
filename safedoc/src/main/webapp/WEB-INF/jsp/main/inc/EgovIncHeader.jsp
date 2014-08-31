@@ -29,7 +29,7 @@
 				<div class="col-xs-6 col-md-10 col-lg-9 right-box">
 					<div class="right-box-wrapper">
 						<div class="header-icons">
-							<div class="search-header hidden-600">
+							<!-- <div class="search-header hidden-600">
 								<a href="#"> <svg xmlns="http://www.w3.org/2000/svg"
 										xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 										width="16px" height="16px" viewBox="0 0 16 16"
@@ -42,7 +42,7 @@
 											height="16" style="vertical-align: top;">
 				  </svg>
 								</a>
-							</div>
+							</div> -->
 							<!-- .search-header
 			  
 			  -->
@@ -89,10 +89,15 @@
 											</ul></li>
 										<li class="parent"><a href="#">구조물진단이란?</a>
 											<ul class="sub">
-												<li><a href="<c:url value="/EgovPageLink.do?link=info/info01"/>">구조물 진단범위</a></li>
-												<li><a href="<c:url value="/EgovPageLink.do?link=info/info02"/>">구조물 진단유형</a></li>
+												<li><a
+													href="<c:url value="/EgovPageLink.do?link=info/info01"/>">구조물
+														진단범위</a></li>
+												<li><a
+													href="<c:url value="/EgovPageLink.do?link=info/info02"/>">구조물
+														진단유형</a></li>
 											</ul></li>
-										<li class=""><a href="<c:url value="/EgovPageLink.do?link=careers/careers01"/>">주요실적</a>
+										<li class=""><a
+											href="<c:url value="/EgovPageLink.do?link=careers/careers01"/>">주요실적</a>
 											<%-- <ul class="sub">
 												<li><a
 													href="<c:url value="/EgovPageLink.do?link=careers/careers01"/>">토질 및 기초</a></li>
@@ -142,9 +147,9 @@
 
 				<div class="phone-active col-sm-9 col-md-9">
 					<a href="#" class="close"><span>close</span>×</a> <span
-						class="title">Call Us</span> <strong>+1 (777) 123 45 67</strong>
+						class="title">Call Us</span> <strong>+1 (02) 595-7115</strong>
 				</div>
-				<div class="search-active col-sm-9 col-md-9">
+				<!-- <div class="search-active col-sm-9 col-md-9">
 					<a href="#" class="close"><span>close</span>×</a>
 					<form name="search-form">
 						<input class="search-string form-control" type="search"
@@ -163,7 +168,7 @@
 			  </svg>
 						</button>
 					</form>
-				</div>
+				</div> -->
 			</div>
 			<!--.row -->
 		</div>
