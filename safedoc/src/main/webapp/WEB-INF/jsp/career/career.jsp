@@ -23,7 +23,7 @@
 				<div class="container">
 					<ul class="breadcrumb">
 						<li><a href="index.html">주요실적</a></li>
-						<li class="active"></li>
+						<li class="active">${career.cate_nm}</li>
 					</ul>
 				</div>
 			</div>
@@ -32,6 +32,7 @@
 			<section id="main"> <header class="page-header">
 			<div class="container">
 				<h1 class="title">주요실적</h1>
+				
 			</div>
 			</header>
 

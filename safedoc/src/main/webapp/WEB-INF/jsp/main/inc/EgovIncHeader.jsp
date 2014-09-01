@@ -99,27 +99,27 @@
 										<li class="parent"><a href="#">주요실적</a>
 											<ul class="sub">
 												<li><a
-													href="<c:url value="/career/careerA"/>">토질
+													href="<c:url value="/career/careerA.do"/>">토질
 														및 기초</a></li>
 												<li><a
-													href="<c:url value="/career/careerB"/>">교량
+													href="<c:url value="/career/careerB.do"/>">교량
 														및 터널, 수리시설 점검 및 진단</a></li>
 												<li><a
-													href="<c:url value="/career/careerC"/>">주요
+													href="<c:url value="/career/careerC.do"/>">주요
 														하자보수․청구진단</a></li>
 												<li><a
-													href="<c:url value="/career/careerD"/>">주요구조설계</a></li>
+													href="<c:url value="/career/careerD.do"/>">주요구조설계</a></li>
 												<li><a
-													href="<c:url value="/career/careerE"/>">보강토
+													href="<c:url value="/career/careerE.do"/>">보강토
 														옹벽 및 개비온옹벽</a></li>
 												<li><a
-													href="<c:url value="/career/careerF"/>">옹벽
+													href="<c:url value="/career/careerF.do"/>">옹벽
 														및 사면</a></li>
 												<li><a
-													href="<c:url value="/career/careerG"/>">건설공사
+													href="<c:url value="/career/careerG.do"/>">건설공사
 														정기안전점검(건축물)</a></li>
 												<li><a
-													href="<c:url value="/career/careerH"/>">정밀안전진단
+													href="<c:url value="/career/careerH.do"/>">정밀안전진단
 														(지하구조물 포함)</a></li>
 												<%-- <li><a
 													href="<c:url value="/careers/careers09"/>">보수․보강공사실적</a></li> --%>
