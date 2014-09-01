@@ -18,7 +18,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="copyright col-xs-12 col-sm-3 col-md-3">Copyright ©
-					ItemBridge Inc., 2013</div>
+					june&yul., 2014</div>
 
 				<div class="phone col-xs-6 col-sm-3 col-md-3">
 					<div class="footer-icon">

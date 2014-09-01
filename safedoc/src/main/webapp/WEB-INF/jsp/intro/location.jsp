@@ -117,21 +117,21 @@
 								<div class="row">
 									<address class="col-sm-6 col-md-6">
 										<div class="title">Phones</div>
-										<div>Support: +777 (100) 1234</div>
-										<div>Sales manager: +777 (100) 4321</div>
-										<div>Director: +777 (100) 1243</div>
+										<div>call : +1 (02) 595-7115</div>
+										<div>fax : +1 (02) 595-1579</div>
+										<!-- <div>Director: +777 (100) 1243</div> -->
 									</address>
 									<address class="col-sm-6 col-md-6">
 										<div class="title">Email Addresses</div>
 										<div>
-											Support: <a href="mailto:support@example.com">support@example.com</a>
+											Support: <a href="mailto:safedoc@naver.com">safedoc@naver.com</a>
 										</div>
-										<div>
+										<!-- <div>
 											Sales manager: <a href="mailto:manager@example.com">manager@example.com</a>
 										</div>
 										<div>
 											Director: <a href="mailto:chief@example.com">chief@example.com</a>
-										</div>
+										</div> -->
 									</address>
 								</div>
 								<hr>
