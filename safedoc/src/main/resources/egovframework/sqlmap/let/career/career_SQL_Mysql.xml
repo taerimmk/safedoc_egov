@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Board">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="Career" type="egovframework.let.career.service.Career"/>
+
+
+	<resultMap id="careerList" class="egovframework.let.career.service.Career">
+		<result property="seq" column="SEQ" columnIndex="1"/>
+		<result property="cate" column="CATE" columnIndex="2"/>
+		<result property="cate_nm" column="CATE_NM" columnIndex="3"/>
+		<result property="careers" column="CAREERS" columnIndex="4"/>
+		<result property="comp" column="COMP" columnIndex="5"/>
+		<result property="date" column="DATE" columnIndex="6"/>
+	</resultMap>
+
+	<select id="CareerDAO.careerList" parameterClass="string" resultMap="careerList">
+		<![CDATA[			
+		SELECT 
+			SEQ,
+    		CATE,
+    		CATE_NM,
+    		CAREERS,
+    		COMP,
+    		DATE
+		FROM 
+			LETTCAREERS
+		WHERE 
+			CATE = #cate#	
+			
+		ORDER BY  DATE DESC	
+		]]>						
+	</select>
+	
+</sqlMap>

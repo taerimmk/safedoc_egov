@@ -96,12 +96,35 @@
 													href="<c:url value="/EgovPageLink.do?link=info/info02"/>">구조물
 														진단유형</a></li>
 											</ul></li>
-										<li class=""><a
-											href="<c:url value="/EgovPageLink.do?link=careers/careers01"/>">주요실적</a>
-											<%-- <ul class="sub">
+										<li class="parent"><a href="#">주요실적</a>
+											<ul class="sub">
 												<li><a
-													href="<c:url value="/EgovPageLink.do?link=careers/careers01"/>">토질 및 기초</a></li>
-											</ul> --%></li>
+													href="<c:url value="/careers/careers01"/>">토질
+														및 기초</a></li>
+												<li><a
+													href="<c:url value="/careers/careers02"/>">교량
+														및 터널, 수리시설 점검 및 진단</a></li>
+												<li><a
+													href="<c:url value="/careers/careers03"/>">주요
+														하자보수․청구진단</a></li>
+												<li><a
+													href="<c:url value="/careers/careers04"/>">주요구조설계</a></li>
+												<li><a
+													href="<c:url value="/careers/careers05"/>">보강토
+														옹벽 및 개비온옹벽</a></li>
+												<li><a
+													href="<c:url value="/careers/careers06"/>">옹벽
+														및 사면</a></li>
+												<li><a
+													href="<c:url value="/careers/careers07"/>">건설공사
+														정기안전점검(건축물)</a></li>
+												<li><a
+													href="<c:url value="/careers/careers08"/>">정밀안전진단
+														(지하구조물 포함)</a></li>
+												<%-- <li><a
+													href="<c:url value="/careers/careers09"/>">보수․보강공사실적</a></li> --%>
+
+											</ul></li>
 										<li class="parent"><a href="#">Q&A</a>
 											<ul class="sub">
 												<li><a
