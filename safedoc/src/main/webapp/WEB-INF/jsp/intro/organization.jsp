@@ -11,6 +11,79 @@
 <meta charset="utf-8">
 <title>회사소개</title>
 <c:import url="/EgovPageLink.do?link=main/inc/headerResource" />
+<style type="text/css">
+.tree {
+	min-height: 20px;
+	padding: 19px;
+	margin-bottom: 20px;
+	background-color: #fbfbfb;
+	border: 1px solid #999;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05)
+}
+
+.tree li {
+	list-style-type: none;
+	margin: 0;
+	padding: 10px 5px 0 5px;
+	position: relative
+}
+
+.tree li::before, .tree li::after {
+	content: '';
+	left: -20px;
+	position: absolute;
+	right: auto
+}
+
+.tree li::before {
+	border-left: 1px solid #999;
+	bottom: 50px;
+	height: 100%;
+	top: 0;
+	width: 1px
+}
+
+.tree li::after {
+	border-top: 1px solid #999;
+	height: 20px;
+	top: 25px;
+	width: 25px
+}
+
+.tree li span {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #999;
+	border-radius: 5px;
+	display: inline-block;
+	padding: 3px 8px;
+	text-decoration: none
+}
+
+.tree li.parent_li>span {
+	cursor: pointer
+}
+
+.tree>ul>li::before, .tree>ul>li::after {
+	border: 0
+}
+
+.tree li:last-child::before {
+	height: 30px
+}
+
+.tree li.parent_li>span:hover, .tree li.parent_li>span:hover+ul li span
+	{
+	background: #eee;
+	border: 1px solid #94a0b4;
+	color: #000
+}
+</style>
 </head>
 <body class="fixed-header">
 	<div class="page-box">
@@ -36,47 +109,131 @@
 			</header>
 			<div class="container">
 				<div class="row">
-					<article class="content col-sm-12 col-md-12">
-					<p>우리 연구원은 정부에 등록된 안전진단전문기관이며, 엔지니어링 활동주체로서 토목/건축 구조물에 대한 각종
-						진단과 설계, 구조해석 및 검토업무를 수행하고 있습니다. 이를테면 구조물의 구조설계, 교량․터널, 건축물․ 수리시설,
-						항만․지반구조물의 안전점검 및 진단, 계측관리, 하자처리상담, 갈등관리 민원상담 및 감정평가진단, 건축설계,
-						토목․건축․설비, 토질 및 지반조사, 구조시험, 보수보강공사, 연구개발, 유지관리 등 구조물에 관한 전반적인 엔지니어링
-						업무를 수행하고 있습니다.</p>
-					<p>구조물의 계획, 설계, 시공, 유지관리는 설계 및 시공기법은 물론 공법, 재료, 구조, 시험, 계측, 지반,
-						유지관리 전반에 대한 사항을 포함하는 고도의 종합적이고 공학적인 지식과 경험이 요구되기 때문에 구조물을 계획, 설계,
-						시공, 유지관리하는 기관은 종합엔지니어링의 특성을 갖는 것이 중요하다 할 수 있습니다. 그래서 우리 연구원은 명실 공히
-						구조물과 관련한 엔지니어링 활동주체의 종합기관을 지향하고 있습니다.</p>
-					<p>우리 연구원은 항상 체계적이고 과학적으로 수행하여 대외적인 신뢰와 공신력을 확보하는데 수행목표를 두고 고객
-						여러분의 상담에 임하고 있으며, 구조물과 관련하여 발생하는 민원/다툼/분쟁 등에 대한 고객의 갈등해소에 최선을 다하고
-						있습니다.</p>
-					<p>우리 회사의 사훈은 "정직하고 성실하게 내일을 개척하자"입니다.</p>
-					<div class="clearfix"></div>
-					<dl class="dl-horizontal">
-						<dt>설 립 :</dt>
-						<dd>1997. 1. 10(설립자 : 윤재진)</dd>
+					<div class="tree well">
+						<ul>
+							<li><span class="badge-success"><i class="fa fa-user"></i> 대표이사</span> <!-- <a
+								href="#">Goes somewhere</a> -->
+								<ul>
+									<li><span class="badge-warning"><i class="fa fa-users"></i> 과학기술부인정
+											한국구조물연구소</span>
+										<ul>
+											<li><span><i class="fa fa-pencil-square-o"></i>
+													조사, 기술, 학술, 연구용역</span></li>
+										</ul></li>
+									<li><span class="badge-warning"><i class="fa fa-user"></i> 기술이사</span>
+										<ul>
+											<li><span class="badge badge-important"><i class="fa fa-users"></i> 기획관리실</span>
+												<ul>
+													<li><span><i class="fa fa-bars"></i> 총무과</span></li>
+													<li><span><i class="fa fa-database"></i> 회계과</span></li>
+													<li><span><i class="fa fa-building"></i> 관리과</span></li>
+												</ul></li>
+											<li><span class="badge badge-important"><i class="fa fa-user"></i> 부장</span>
+												<ul>
+													<li><span><i class="fa fa-search"></i> 진단부</span>
+														<ul>
+															<li><span><i class="fa fa-users"></i>
+																	조사팀(상태측정/계측)</span></li>
+															<li><span><i class="fa fa-users"></i> 건축팀</span></li>
+															<li><span><i class="fa fa-users"></i>
+																	토목1팀(일반토목)</span></li>
+															<li><span><i class="fa fa-users"></i>
+																	토목2팀(보강토/개비온옹벽등)</span></li>
+															<li><span><i class="fa fa-users"></i>
+																	특수구조팀(진동/침하/누수현상등)</span></li>
+														</ul></li>
+												</ul></li>
+											<li><span class="badge badge-important"><i class="fa fa-users"></i> 토질/기초실</span>
+												<ul>
+													<li><span><i class="fa fa-bars"></i> 토질/지반조사</span></li>
+													<li><span><i class="fa fa-database"></i> 계측관리</span></li>
+													<li><span><i class="fa fa-building"></i> 보수/보강</span></li>
+												</ul></li>
+											<li><span class="badge badge-important"><i class="fa fa-users"></i> 견적/적산실</span>
+												<ul>
+													<li><span><i class="fa fa-bars"></i> 보수,보강설계</span></li>
+													<li><span><i class="fa fa-database"></i>
+															보수,보강재료</span></li>
+													<li><span><i class="fa fa-building"></i>
+															보수,보강시공</span></li>
+												</ul></li>
+											<li><span class="badge badge-important"><i class="fa fa-users"></i> 갈등관리팀</span>
+												<ul> 
+													<li><span><i class="fa fa-bars"></i>
+															토목,건축,설비(행정민원/하자/소송진단 등)</span></li>
+												</ul></li>
+											<li><span class="badge badge-important"><i class="fa fa-users"></i> 구조부(건축,토목)</span>
+												<ul>
+													<li><span><i class="fa fa-bars"></i>
+															구조설계(건축,토목) 및 검토</span></li>
+												</ul></li>
+										</ul></li>
+									<li><span class="badge-warning"><i class="fa fa-user"></i> 공사/관리부</span>
+										<ul>
+											<li><span><i class="fa fa-bars"></i> 보수,보강공사 및 시공감리</span></li>
+										</ul></li>
+								</ul></li>
+						</ul>
+					</div>
 
-						<dt>대표이사 :</dt>
-						<dd>김국진</dd>
+					<!-- <div class="tree">
+						<ul>
+							<li><span><i class="icon-calendar"></i> 2013, Week 2</span>
+								<ul>
+									<li><span class="badge badge-success"><i
+											class="icon-minus-sign"></i> Monday, January 7: 8.00 hours</span>
+										<ul>
+											<li><a href=""><span><i class="icon-time"></i>
+														8.00</span> &ndash; Changed CSS to accomodate...</a></li>
+										</ul></li>
+									<li><span class="badge badge-success"><i
+											class="icon-minus-sign"></i> Tuesday, January 8: 8.00 hours</span>
+										<ul>
+											<li><span><i class="icon-time"></i> 6.00</span> &ndash;
+												<a href="">Altered code...</a></li>
+											<li><span><i class="icon-time"></i> 2.00</span> &ndash;
+												<a href="">Simplified our approach to...</a></li>
+										</ul></li>
+									<li><span class="badge badge-warning"><i
+											class="icon-minus-sign"></i> Wednesday, January 9: 6.00 hours</span>
+										<ul>
+											<li><a href=""><span><i class="icon-time"></i>
+														3.00</span> &ndash; Fixed bug caused by...</a></li>
+											<li><a href=""><span><i class="icon-time"></i>
+														3.00</span> &ndash; Comitting latest code to Git...</a></li>
+										</ul></li>
+									<li><span class="badge badge-important"><i
+											class="icon-minus-sign"></i> Wednesday, January 9: 4.00 hours</span>
+										<ul>
+											<li><a href=""><span><i class="icon-time"></i>
+														2.00</span> &ndash; Create component that...</a></li>
+										</ul></li>
+								</ul></li>
+							<li><span><i class="icon-calendar"></i> 2013, Week 3</span>
+								<ul>
+									<li><span class="badge badge-success"><i
+											class="icon-minus-sign"></i> Monday, January 14: 8.00 hours</span>
+										<ul>
+											<li><span><i class="icon-time"></i> 7.75</span> &ndash;
+												<a href="">Writing documentation...</a></li>
+											<li><span><i class="icon-time"></i> 0.25</span> &ndash;
+												<a href="">Reverting code back to...</a></li>
+										</ul></li>
+								</ul></li>
+						</ul>
+					</div> -->
 
-						<dt>법인등록번호 :</dt>
-						<dd>110111-1362708 (등기번호 : 136270)</dd>
-
-						<dt>소재지 :</dt>
-						<dd>137-802 서울시 서초구 반포동 49-11(서초중앙로 31길 14-13) 희정빌딩</dd>
-					</dl>
 				</div>
-				</article>
+
 
 				<!-- .content -->
 			</div>
+
+			<!-- .container --> </section>
+			<!-- #main -->
+
 		</div>
-
-		<!-- .container -->
-		</section>
-		<!-- #main -->
-
-	</div>
-	<!-- .page-box-content -->
+		<!-- .page-box-content -->
 	</div>
 	<!-- .page-box -->
 
@@ -84,5 +241,29 @@
 	<div class="clearfix"></div>
 
 	<c:import url="/EgovPageLink.do?link=main/inc/footerResource" />
+	<script type="text/javascript">
+		$(function() {
+			$('.tree li:has(ul)').addClass('parent_li').find(' > span').attr(
+					'title', 'Collapse this branch');
+			$('.tree li.parent_li > span').on(
+					'click',
+					function(e) {
+						var children = $(this).parent('li.parent_li').find(
+								' > ul > li');
+						if (children.is(":visible")) {
+							children.hide('fast');
+							/* $(this).attr('title', 'Expand this branch').find(
+									' > i').addClass('fa fa-users')
+									.removeClass('fa fa-users'); */
+						} else {
+							children.show('fast');
+							/* $(this).attr('title', 'Collapse this branch').find(
+									' > i').addClass('fa-users')
+									.removeClass('fa-users'); */
+						}
+						e.stopPropagation();
+					});
+		});
+	</script>
 </body>
 </html>
