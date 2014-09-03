@@ -20,7 +20,8 @@
 			<div class="row">
 				<div class="col-xs-6 col-md-2 col-lg-3 logo-box">
 					<div class="logo">
-						<a href="/"> <img src="/img/logo.png" class="logo-img" alt="">
+						<a href="/"><h5 style="margin-bottom: 0px;">한국 구조물진단 연구원</h5> 
+						<!-- <img src="/img/logo.png" class="logo-img" alt="" /> -->
 						</a>
 					</div>
 				</div>
@@ -170,7 +171,7 @@
 
 				<div class="phone-active col-sm-9 col-md-9">
 					<a href="#" class="close"><span>close</span>×</a> <span
-						class="title">Call Us</span> <strong>+1 (02) 595-7115</strong>
+						class="title">Call Us</span> <strong>+82 (02) 595-7115</strong>
 				</div>
 				<!-- <div class="search-active col-sm-9 col-md-9">
 					<a href="#" class="close"><span>close</span>×</a>

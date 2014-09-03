@@ -37,9 +37,15 @@
 			</header>
 			<div class="container">
 				<div class="row">
-					<article class="content col-sm-12 col-md-12 bottom-padding">
+					
 					<div class="title-box">
 						<h2 class="title">윤 재 진(尹 在 振 Ph.D., Jae Jin Yoon) 약력</h2>
+					</div>
+					<div style="margin-bottom: 10px;">
+						<a class="gallery-images" rel="fancybox"
+							href="#"> <img
+							src="/img/content/member01.jpg" width="345px" height="254" alt="" />
+						</a>
 					</div>
 					<div class="panel-group" id="accordion3">
 						<div class="panel panel-default panel-bg active">
@@ -223,7 +229,7 @@
 
 					</div>
 					</article>
-					<div class="col-sm-12 col-md-12"> 
+					<div class="col-sm-12 col-md-12">
 						<div class="title-box">
 							<h2 class="title">주 요 저 서</h2>
 						</div>

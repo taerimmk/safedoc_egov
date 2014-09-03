@@ -37,8 +37,19 @@
 			<div class="container">
 				<div class="row">
 					<article class="content col-sm-12 col-md-12">
-					<p>다음은 우리 연구원의 상임위원으로 활동 중인 윤재진 박사가 사내 및 대학 강의에서 피력한 ‘구조물진단’에
-						대한 개념을 인터뷰 형식으로 구성한 것이다.</p>
+					
+					<div class="col-sm-4 col-md-4" style="margin-bottom: 20px;">
+						<a class="gallery-images" rel="fancybox"
+							href="img/content/portfolio-2.jpg"> <img
+							src="/img/content/member01.jpg" width="345px" height="254" alt="" />
+						</a>
+					</div>
+					
+					<div class="col-sm-8 col-md-8">
+						<p>다음은 우리 연구원의 상임위원으로 활동 중인 윤재진 박사가 사내 및 대학 강의에서 피력한 ‘구조물진단’에
+							대한 개념을 인터뷰 형식으로 구성한 것이다.</p>
+					</div>
+					
 
 					<br>
 					<div class="clearfix"></div>

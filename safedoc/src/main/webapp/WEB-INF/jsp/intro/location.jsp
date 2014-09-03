@@ -117,14 +117,14 @@
 								<div class="row">
 									<address class="col-sm-6 col-md-6">
 										<div class="title">Phones</div>
-										<div>call : +1 (02) 595-7115</div>
-										<div>fax : +1 (02) 595-1579</div>
+										<div>call : +82 (02) 595-7115</div>
+										<div>fax : +82 (02) 595-1579</div>
 										<!-- <div>Director: +777 (100) 1243</div> -->
 									</address>
 									<address class="col-sm-6 col-md-6">
 										<div class="title">Email Addresses</div>
 										<div>
-											Support: <a href="mailto:safedoc@naver.com">safedoc@naver.com</a>
+											Support: <a href="mailto:kosis@chol.com">kosis@chol.com</a>
 										</div>
 										<!-- <div>
 											Sales manager: <a href="mailto:manager@example.com">manager@example.com</a>

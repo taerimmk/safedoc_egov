@@ -32,8 +32,8 @@
 				M11.001,12H5V2h6V12z"></path>
 			</svg>
 					</div>
-					<strong class="title">Call Us:</strong> +1 (02) 595-7115 <br>
-					<strong>or FAX</strong> +1 (02) 595-1579
+					<strong class="title">Call Us:</strong> +82 (02) 595-7115 <br>
+					<strong>or FAX</strong> +82 (02) 595-1579
 
 				</div>
 
